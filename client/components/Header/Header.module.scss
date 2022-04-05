@@ -1,6 +1,9 @@
 .root {
   background-color: #44484d;
   margin-bottom: 40px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+
   .body {
     height: 60px;
     display: flex;
@@ -20,5 +23,14 @@
 
   .menu {
     flex: 1 1 auto;
+    ul {
+      display: flex;
+      gap: 5px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 5px;
   }
 }

@@ -36,3 +36,18 @@ ul {
   text-align: center;
   margin-top: 20%;
 }
+
+.auth {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  h4 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
