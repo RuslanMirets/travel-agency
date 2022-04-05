@@ -1,0 +1,24 @@
+.root {
+  background-color: #44484d;
+  margin-bottom: 40px;
+  .body {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    color: #ebebeb;
+
+    button {
+      color: #ebebeb;
+    }
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .menu {
+    flex: 1 1 auto;
+  }
+}
