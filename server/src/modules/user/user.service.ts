@@ -18,4 +18,8 @@ export class UserService {
   async findOneById(id: number): Promise<User> {
     return await this.userRepository.findOne<User>({ where: { id } });
   }
+
+  async findAll() {
+    return await this.userRepository.findAll({ include: { all: true } });
+  }
 }
