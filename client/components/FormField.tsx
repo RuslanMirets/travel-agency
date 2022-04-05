@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material';
+import { TextField } from '@material-ui/core';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -22,6 +22,7 @@ export const FormField: React.FC<FormFieldProps> = ({ name, label, type, disable
       error={!!formState.errors[name]?.message}
       helperText={formState.errors[name]?.message}
       disabled={disabled}
+      color="primary"
     />
   );
 };
