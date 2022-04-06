@@ -3,10 +3,27 @@
   background-color: #44484d;
   margin-bottom: 40px;
 
+  .body {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
   .logo {
     white-space: nowrap;
     a {
       display: flex;
     }
+  }
+
+  .menu {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 5px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 5px;
   }
 }
