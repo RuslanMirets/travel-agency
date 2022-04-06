@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import { Button, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logout } from '../../store/actions/user';
+import { NavItem } from '../NavItem';
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,59 +19,26 @@ export const Header: React.FC = () => {
       <Container>
         <div className={styles.body}>
           <Link href="/">
-            <a className={styles.logo}>LOGO</a>
+            <a className={styles.logo}>
+              <Typography variant="h5">LOGO</Typography>
+            </a>
           </Link>
-          <nav className={styles.menu}>
-            <ul>
-              <li>
-                <Link href="/">
-                  <a>
-                    <Button>Главная</Button>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/users">
-                  <a>
-                    <Button>Пользователи</Button>
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <ul className={styles.actions}>
+          <Box className={styles.menu} component="nav">
+            <Box component="ul">
+              <NavItem title="Главная" href="/" />
+              <NavItem title="Пользователи" href="/users" />
+            </Box>
+          </Box>
+          <Box className={styles.actions} component="ul">
             {user ? (
-              <>
-                <li>
-                  <Link href="/profile">
-                    <a>
-                      <Button>Профиль | {user.name}</Button>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Button onClick={handleLogout}>Выйти</Button>
-                </li>
-              </>
+              <NavItem title="Выйти" href="#" onClick={handleLogout} />
             ) : (
               <>
-                <li>
-                  <Link href="/login">
-                    <a>
-                      <Button>Войти</Button>
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/register">
-                    <a>
-                      <Button>Зарегистрироваться</Button>
-                    </a>
-                  </Link>
-                </li>
+                <NavItem title="Войти" href="/login" />
+                <NavItem title="Зарегистрироваться" href="/register" />
               </>
             )}
-          </ul>
+          </Box>
         </div>
       </Container>
     </header>

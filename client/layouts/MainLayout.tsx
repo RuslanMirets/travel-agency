@@ -1,5 +1,4 @@
-import { MuiThemeProvider } from '@material-ui/core';
-import { Container } from '@mui/material';
+import { Container, ThemeProvider } from '@mui/material';
 import Head from 'next/head';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
@@ -22,7 +21,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title, description, k
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <div className="wrapper">
           <Header />
           <main className="main">
@@ -30,7 +29,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title, description, k
           </main>
           {/* <Footer /> */}
         </div>
-      </MuiThemeProvider>
+      </ThemeProvider>
     </>
   );
 };

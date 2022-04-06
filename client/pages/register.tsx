@@ -5,24 +5,23 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormField } from '../components/FormField';
 import MainLayout from '../layouts/MainLayout';
-import { LoginFormSchema } from '../utils/validations';
+import { RegisterFormSchema } from '../utils/validations';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { login } from '../store/actions/user';
 import { useRouter } from 'next/router';
 
-const Login: NextPage = () => {
+const Register: NextPage = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
 
   const methods = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: yupResolver(LoginFormSchema),
+    resolver: yupResolver(RegisterFormSchema),
   });
 
   const onSubmit = (data: any) => {
-    dispatch(login(data));
+    console.log(data);
   };
 
   const router = useRouter();
@@ -31,17 +30,18 @@ const Login: NextPage = () => {
   }, [user]);
 
   if (user !== null) {
-    return <MainLayout title="Авторизация"></MainLayout>;
+    return <MainLayout title="Регистрация"></MainLayout>;
   }
 
   return (
-    <MainLayout title="Авторизация">
+    <MainLayout title="Регистрация">
       <Box className="auth">
         <Typography variant="h4" component="h4">
-          Авторизация
+          Регистрация
         </Typography>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <FormField type="text" label="Имя" name="name" />
             <FormField type="email" label="Email" name="email" />
             <FormField type="password" label="Пароль" name="password" />
             <Button
@@ -53,12 +53,12 @@ const Login: NextPage = () => {
             </Button>
             <Box className="auth__foot">
               <Typography variant="body1" component="div">
-                У вас нет аккаунта?
+                Есть аккаунт?
               </Typography>
-              <Link href="/register">
+              <Link href="/login">
                 <a>
                   <Button variant="text" color="primary">
-                    Зарегистрироваться
+                    Войти
                   </Button>
                 </a>
               </Link>
@@ -70,4 +70,4 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default Register;
