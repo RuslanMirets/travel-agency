@@ -1,0 +1,12 @@
+.root {
+  position: static;
+  background-color: #44484d;
+  margin-bottom: 40px;
+
+  .logo {
+    white-space: nowrap;
+    a {
+      display: flex;
+    }
+  }
+}
