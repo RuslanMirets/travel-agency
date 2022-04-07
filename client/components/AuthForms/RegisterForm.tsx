@@ -6,8 +6,12 @@ import { RegisterFormSchema } from '../../utils/validations';
 import { FormField } from '../FormField';
 import styles from './AuthForms.module.scss';
 import { LinkItem } from '../LinkItem';
+import { useAppDispatch } from '../../store/hooks';
+import { register } from '../../store/actions/actions';
 
 export const RegisterForm: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const methods = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -15,7 +19,8 @@ export const RegisterForm: React.FC = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    dispatch(register(data));
+    methods.reset();
   };
 
   return (

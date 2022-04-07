@@ -4,10 +4,14 @@ import { IUser } from '../../types/user';
 
 export interface UserState {
   users: IUser[];
+  user: IUser | null;
+  registerData: IUser | null;
 }
 
 const initialState: UserState = {
   users: [],
+  user: null,
+  registerData: null,
 };
 
 export const userSlice = createSlice({
@@ -16,6 +20,15 @@ export const userSlice = createSlice({
   reducers: {
     getUsers(state, action) {
       state.users = action.payload;
+    },
+    login(state, action: PayloadAction<IUser>) {
+      state.user = action.payload;
+    },
+    register(state, action: PayloadAction<IUser>) {
+      state.registerData = action.payload;
+    },
+    logout(state) {
+      state.user = null;
     },
   },
   extraReducers: {

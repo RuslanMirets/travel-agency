@@ -21,6 +21,8 @@ import React from 'react';
 import { LinkItem } from '../LinkItem';
 import { NavItem } from '../NavItem';
 import styles from './Header.module.scss';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logout } from '../../store/actions/actions';
 
 const pages = [
   { title: 'Главная', href: '/' },
@@ -46,8 +48,14 @@ export const Header: React.FC = () => {
     setAnchorEl(null);
   };
 
-  const isAuth = false;
-  const isAdmin = true;
+  const disptach = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
+  const isAdmin = false;
+
+  const handleLogout = () => {
+    handleClose();
+    disptach(logout());
+  };
 
   return (
     <AppBar classes={{ root: styles.root }}>
@@ -62,17 +70,45 @@ export const Header: React.FC = () => {
             ))}
           </Box>
           <Box className={styles.actions}>
-            {isAuth ? (
+            {user ? (
               <>
                 <IconButton onClick={handleClick}>
-                  <Avatar alt="Avatar" />
+                  <Avatar src={user.avatar} alt={user.name} />
                 </IconButton>
                 <Menu
                   id="basic-menu"
                   anchorEl={anchorEl}
                   open={open}
                   onClose={handleClose}
-                  keepMounted>
+                  keepMounted
+                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                  PaperProps={{
+                    elevation: 0,
+                    sx: {
+                      overflow: 'visible',
+                      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                      mt: 1.5,
+                      '& .MuiAvatar-root': {
+                        width: 32,
+                        height: 32,
+                        ml: -0.5,
+                        mr: 1,
+                      },
+                      '&:before': {
+                        content: '""',
+                        display: 'block',
+                        position: 'absolute',
+                        top: 0,
+                        right: 21,
+                        width: 10,
+                        height: 10,
+                        bgcolor: 'background.paper',
+                        transform: 'translateY(-50%) rotate(45deg)',
+                        zIndex: 0,
+                      },
+                    },
+                  }}>
                   <Link href="/profile">
                     <MenuItem onClick={handleClose} component="a">
                       <ListItemIcon>
@@ -95,7 +131,7 @@ export const Header: React.FC = () => {
                       </Link>
                     ))}
                   <Divider variant="middle" />
-                  <MenuItem onClick={handleClose}>
+                  <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
                       <LogoutIcon fontSize="small" />
                     </ListItemIcon>

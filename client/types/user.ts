@@ -9,4 +9,5 @@ export interface IUser {
   updatedAt: Date;
   role: IRole[];
   token: string;
+  avatar: string;
 }
