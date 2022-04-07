@@ -26,7 +26,9 @@ import { logout } from '../../store/actions/user';
 
 const pages = [
   { title: 'Главная', href: '/' },
-  { title: 'Пользователи', href: '/users' },
+  { title: 'Отдых за границей', href: '/world/abroad' },
+  { title: 'Отдых в России', href: '/world/russia' },
+  { title: 'Виды отдыха', href: '/tours' },
 ];
 
 const actions = [
