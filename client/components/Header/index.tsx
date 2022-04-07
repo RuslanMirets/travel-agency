@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
     setAnchorEl(null);
   };
 
-  const isAuth = true;
+  const isAuth = false;
   const isAdmin = true;
 
   return (
