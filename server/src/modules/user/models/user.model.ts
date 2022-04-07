@@ -18,4 +18,7 @@ export class User extends Model<User> {
 
   @BelongsToMany(() => Role, () => UserRole)
   role: Role[];
+
+  @Column({ type: DataType.STRING, allowNull: false, defaultValue: '' })
+  avatar: string;
 }
