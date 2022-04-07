@@ -6,12 +6,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from '@mui/material';
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
 import { wrapper } from '../store';
-import { getUsers } from '../store/actions/actions';
+import { getUsers } from '../store/actions/user';
 import { useAppSelector } from '../store/hooks';
 
 const Users = () => {

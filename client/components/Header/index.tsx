@@ -22,7 +22,7 @@ import { LinkItem } from '../LinkItem';
 import { NavItem } from '../NavItem';
 import styles from './Header.module.scss';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { logout } from '../../store/actions/actions';
+import { logout } from '../../store/actions/user';
 
 const pages = [
   { title: 'Главная', href: '/' },

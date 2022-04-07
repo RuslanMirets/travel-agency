@@ -1,3 +1,4 @@
+import { alertSlice } from './../slices/alert';
 import { setCookie, destroyCookie, parseCookies } from 'nookies';
 import { AppDispatch } from '..';
 import { IUser } from '../../types/user';
@@ -21,8 +22,9 @@ export const login = (data: IUser) => async (dispatch: AppDispatch) => {
       path: '/',
     });
     dispatch(userSlice.actions.login(response.data));
+    dispatch(alertSlice.actions.success('Успешная авторизация'));
   } catch (error: any) {
-    console.log(error);
+    dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
 
@@ -30,8 +32,9 @@ export const register = (data: IUser) => async (dispatch: AppDispatch) => {
   try {
     const response = await postAPI('auth/register', data);
     dispatch(userSlice.actions.register(response.data));
+    dispatch(alertSlice.actions.success('Успешная регистрация'));
   } catch (error: any) {
-    console.log(error);
+    dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
 
@@ -40,7 +43,7 @@ export const logout = () => async (dispatch: AppDispatch) => {
     destroyCookie(null, 'travelAuthToken', null);
     dispatch(userSlice.actions.logout());
   } catch (error: any) {
-    console.log(error);
+    dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
 

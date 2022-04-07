@@ -7,7 +7,7 @@ import { FormField } from '../FormField';
 import styles from './AuthForms.module.scss';
 import { LinkItem } from '../LinkItem';
 import { useAppDispatch } from '../../store/hooks';
-import { login } from '../../store/actions/actions';
+import { login } from '../../store/actions/user';
 
 export const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
