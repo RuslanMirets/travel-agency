@@ -1,7 +1,9 @@
 import { Container, ThemeProvider } from '@mui/material';
 import Head from 'next/head';
+import React from 'react';
 import { Alert } from '../components/Alert';
 import { Header } from '../components/Header';
+import { NextBreadcrumbs } from '../components/NextBreadcrumbs';
 import { theme } from '../theme';
 
 interface MainLayoutProps {
@@ -26,7 +28,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, title, description, k
           <Header />
           <Alert />
           <main className="main">
-            <Container>{children}</Container>
+            <Container>
+              <NextBreadcrumbs />
+              {children}
+            </Container>
           </main>
         </div>
       </ThemeProvider>
