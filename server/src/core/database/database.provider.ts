@@ -1,3 +1,7 @@
+import { City } from './../../modules/city/models/city.model';
+import { Country } from './../../modules/country/models/country.model';
+import { Complex } from './../../modules/complex/models/complex.model';
+import { Tour } from './../../modules/tour/models/tour.model';
 import { UserRole } from './../../modules/role/models/user-role.model';
 import { Role } from './../../modules/role/models/role.model';
 import { Sequelize } from 'sequelize-typescript';
@@ -24,7 +28,7 @@ export const databaseProvider = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Role, UserRole]);
+      sequelize.addModels([User, Role, UserRole, Tour, Complex, Country, City]);
       await sequelize.sync();
       return sequelize;
     },
