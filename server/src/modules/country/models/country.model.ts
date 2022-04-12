@@ -1,4 +1,5 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { City } from './../../city/models/city.model';
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
 
 @Table({ tableName: 'Country' })
 export class Country extends Model<Country> {
@@ -7,4 +8,7 @@ export class Country extends Model<Country> {
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
+
+  @HasMany(() => City)
+  city: City;
 }

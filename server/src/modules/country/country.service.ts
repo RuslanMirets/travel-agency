@@ -12,7 +12,7 @@ export class CountryService {
   }
 
   async findAll() {
-    return await this.countryRepository.findAll();
+    return await this.countryRepository.findAll({ include: { all: true } });
   }
 
   async findOneById(id: number): Promise<Country> {

@@ -12,14 +12,22 @@ export class CityService {
   ) {}
 
   async create(dto: CreateCityDto, countryId: number) {
-    await this.countryService.findOneById(countryId);
-    return await this.cityRepository.create({
+    const country = await this.countryService.findOneById(countryId);
+    const city = await this.cityRepository.create({
       name: dto.name,
       countryId: countryId,
     });
+    return { ...city['dataValues'], country };
+
+    //Альтернативный способ
+    // const city = await this.cityRepository.create(dto);
+    // const country = await this.countryService.findOneById(countryId);
+    // await city.$set('country', country.id);
+    // const { ...result } = city['dataValues'];
+    // return { ...result, country };
   }
 
   async findAll() {
-    return await this.cityRepository.findAll();
+    return await this.cityRepository.findAll({ include: { all: true } });
   }
 }

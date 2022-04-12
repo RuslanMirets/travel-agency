@@ -1,4 +1,4 @@
-import { Table, Model, Column, DataType, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, Column, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { Country } from 'src/modules/country/models/country.model';
 
 @Table({ tableName: 'City' })
@@ -12,4 +12,7 @@ export class City extends Model<City> {
   @ForeignKey(() => Country)
   @Column({ type: DataType.INTEGER, allowNull: false })
   countryId: number;
+
+  @BelongsTo(() => Country)
+  country: Country;
 }
