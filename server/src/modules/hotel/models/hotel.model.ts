@@ -1,6 +1,15 @@
 import { Complex } from './../../complex/models/complex.model';
 import { City } from './../../city/models/city.model';
-import { Table, Model, Column, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
+} from 'sequelize-typescript';
+import { Tour } from 'src/modules/tour/models/tour.model';
 
 @Table({ tableName: 'Hotel' })
 export class Hotel extends Model<Hotel> {
@@ -26,4 +35,7 @@ export class Hotel extends Model<Hotel> {
 
   @BelongsTo(() => Complex)
   complex: Complex;
+
+  @HasMany(() => Tour)
+  tour: Tour;
 }

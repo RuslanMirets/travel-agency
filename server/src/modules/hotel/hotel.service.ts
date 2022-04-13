@@ -28,4 +28,8 @@ export class HotelService {
   async findAll() {
     return await this.hotelRepository.findAll({ include: { all: true } });
   }
+
+  async findOneById(id: number): Promise<Hotel> {
+    return await this.hotelRepository.findOne<Hotel>({ where: { id } });
+  }
 }

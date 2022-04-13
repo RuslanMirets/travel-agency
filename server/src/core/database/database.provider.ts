@@ -1,3 +1,4 @@
+import { TourComfort } from './../../modules/comfort/models/tour-comfort.model';
 import { Comfort } from './../../modules/comfort/models/comfort.model';
 import { Type } from './../../modules/type/models/type.model';
 import { Transport } from './../../modules/transport/models/transport.model';
@@ -44,6 +45,7 @@ export const databaseProvider = [
         Transport,
         Type,
         Comfort,
+        TourComfort,
       ]);
       await sequelize.sync();
       return sequelize;

@@ -9,5 +9,6 @@ import { hotelProvider } from './hotel.provider';
   imports: [CityModule, ComplexModule],
   providers: [HotelService, ...hotelProvider],
   controllers: [HotelController],
+  exports: [HotelService],
 })
 export class HotelModule {}

@@ -1,4 +1,6 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { TourComfort } from './tour-comfort.model';
+import { Table, Model, Column, DataType, BelongsToMany } from 'sequelize-typescript';
+import { Tour } from 'src/modules/tour/models/tour.model';
 
 @Table({ tableName: 'Comfort' })
 export class Comfort extends Model<Comfort> {
@@ -7,4 +9,7 @@ export class Comfort extends Model<Comfort> {
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
+
+  @BelongsToMany(() => Tour, () => TourComfort)
+  tour: Tour[];
 }

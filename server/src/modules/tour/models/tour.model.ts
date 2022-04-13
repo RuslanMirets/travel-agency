@@ -1,4 +1,17 @@
-import { Table, Model, Column, DataType, ForeignKey } from 'sequelize-typescript';
+import { TourComfort } from './../../comfort/models/tour-comfort.model';
+import { Comfort } from './../../comfort/models/comfort.model';
+import { Type } from './../../type/models/type.model';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  BelongsToMany,
+} from 'sequelize-typescript';
+import { Hotel } from 'src/modules/hotel/models/hotel.model';
+import { Transport } from 'src/modules/transport/models/transport.model';
 
 @Table({ tableName: 'Tour' })
 export class Tour extends Model<Tour> {
@@ -29,15 +42,27 @@ export class Tour extends Model<Tour> {
   @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
-  // @ForeignKey(() => TourType)
-  // @Column({ type: DataType.INTEGER })
-  // tourTypeId: number;
+  @ForeignKey(() => Type)
+  @Column({ type: DataType.INTEGER })
+  typeId: number;
 
-  // @ForeignKey(() => Hotel)
-  // @Column({ type: DataType.INTEGER })
-  // hotelId: number;
+  @BelongsTo(() => Type)
+  type: Type;
 
-  // @ForeignKey(() => Transport)
-  // @Column({ type: DataType.INTEGER })
-  // transportId: number;
+  @ForeignKey(() => Hotel)
+  @Column({ type: DataType.INTEGER })
+  hotelId: number;
+
+  @BelongsTo(() => Hotel)
+  hotel: Hotel;
+
+  @ForeignKey(() => Transport)
+  @Column({ type: DataType.INTEGER })
+  transportId: number;
+
+  @BelongsTo(() => Transport)
+  transport: Transport;
+
+  @BelongsToMany(() => Comfort, () => TourComfort)
+  comfort: Comfort[];
 }

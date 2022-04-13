@@ -6,5 +6,6 @@ import { comfortProvider } from './comfort.provider';
 @Module({
   providers: [ComfortService, ...comfortProvider],
   controllers: [ComfortController],
+  exports: [ComfortService],
 })
 export class ComfortModule {}
