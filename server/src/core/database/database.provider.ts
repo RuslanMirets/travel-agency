@@ -1,3 +1,4 @@
+import { Comfort } from './../../modules/comfort/models/comfort.model';
 import { Type } from './../../modules/type/models/type.model';
 import { Transport } from './../../modules/transport/models/transport.model';
 import { City } from './../../modules/city/models/city.model';
@@ -42,6 +43,7 @@ export const databaseProvider = [
         Hotel,
         Transport,
         Type,
+        Comfort,
       ]);
       await sequelize.sync();
       return sequelize;
