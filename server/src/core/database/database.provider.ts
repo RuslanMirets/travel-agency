@@ -13,6 +13,7 @@ import { User } from 'src/modules/user/models/user.model';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { Hotel } from 'src/modules/hotel/models/hotel.model';
+import { Continent } from 'src/modules/continent/models/continent.model';
 
 export const databaseProvider = [
   {
@@ -46,6 +47,7 @@ export const databaseProvider = [
         Type,
         Comfort,
         TourComfort,
+        Continent,
       ]);
       await sequelize.sync();
       return sequelize;

@@ -1,5 +1,14 @@
+import { Continent } from './../../continent/models/continent.model';
 import { City } from './../../city/models/city.model';
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 
 @Table({ tableName: 'Country' })
 export class Country extends Model<Country> {
@@ -11,4 +20,11 @@ export class Country extends Model<Country> {
 
   @HasMany(() => City)
   city: City;
+
+  @ForeignKey(() => Continent)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  continentId: number;
+
+  @BelongsTo(() => Continent)
+  continent: Continent;
 }
