@@ -22,7 +22,7 @@ export class HotelService {
       cityId: cityId,
       complexId: complexId,
     });
-    return { ...city['dataValues'], hotel, complex };
+    return { ...hotel['dataValues'], city, complex };
   }
 
   async findAll() {

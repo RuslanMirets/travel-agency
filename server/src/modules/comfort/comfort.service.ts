@@ -18,4 +18,8 @@ export class ComfortService {
   async findOneById(id: number): Promise<Comfort> {
     return await this.comfortRepository.findOne<Comfort>({ where: { id } });
   }
+
+  async findAllById(id: number) {
+    return await this.comfortRepository.findAll({ where: { id } });
+  }
 }

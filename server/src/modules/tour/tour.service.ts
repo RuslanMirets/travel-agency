@@ -42,8 +42,11 @@ export class TourService {
       transportId: transportId,
     });
 
-    const comfort = await this.comfortService.findOneById(comfortId);
-    await tour.$set('comfort', comfort.id);
+    const comfort = await this.comfortService.findAllById(comfortId);
+    await tour.$set(
+      'comfort',
+      comfort.filter((item) => item.id),
+    );
 
     return { ...tour['dataValues'], type, hotel, transport, comfort };
   }

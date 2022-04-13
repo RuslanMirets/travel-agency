@@ -27,19 +27,19 @@ export class Tour extends Model<Tour> {
   @Column({ type: DataType.STRING, allowNull: false })
   durationDays: string;
 
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.STRING(16000) })
   tourIncludes: string;
 
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.STRING(16000) })
   additionalInfo: string;
 
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.STRING(16000) })
   additionalPayment: string;
 
   @Column({ type: DataType.JSONB })
   images: string[];
 
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(16000), allowNull: false })
   description: string;
 
   @ForeignKey(() => Type)
