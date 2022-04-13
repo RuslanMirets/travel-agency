@@ -8,6 +8,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { User } from 'src/modules/user/models/user.model';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
+import { Hotel } from 'src/modules/hotel/models/hotel.model';
 
 export const databaseProvider = [
   {
@@ -28,7 +29,7 @@ export const databaseProvider = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Role, UserRole, Tour, Complex, Country, City]);
+      sequelize.addModels([User, Role, UserRole, Tour, Complex, Country, City, Hotel]);
       await sequelize.sync();
       return sequelize;
     },

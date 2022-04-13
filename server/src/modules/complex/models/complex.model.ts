@@ -1,4 +1,5 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import { Hotel } from 'src/modules/hotel/models/hotel.model';
 
 @Table({ tableName: 'Complex' })
 export class Complex extends Model<Complex> {
@@ -7,4 +8,7 @@ export class Complex extends Model<Complex> {
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
+
+  @HasMany(() => Hotel)
+  hotel: Hotel;
 }

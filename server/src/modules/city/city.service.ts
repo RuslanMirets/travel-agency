@@ -30,4 +30,8 @@ export class CityService {
   async findAll() {
     return await this.cityRepository.findAll({ include: { all: true } });
   }
+
+  async findOneById(id: number): Promise<City> {
+    return await this.cityRepository.findOne<City>({ where: { id } });
+  }
 }

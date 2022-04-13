@@ -1,5 +1,14 @@
-import { Table, Model, Column, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
+} from 'sequelize-typescript';
 import { Country } from 'src/modules/country/models/country.model';
+import { Hotel } from 'src/modules/hotel/models/hotel.model';
 
 @Table({ tableName: 'City' })
 export class City extends Model<City> {
@@ -15,4 +24,7 @@ export class City extends Model<City> {
 
   @BelongsTo(() => Country)
   country: Country;
+
+  @HasMany(() => Hotel)
+  hotel: Hotel;
 }
