@@ -7,8 +7,8 @@ import { Inject, Injectable } from '@nestjs/common';
 export class TypeService {
   constructor(@Inject(TYPE_REPOSITORY) private readonly typeRepository: typeof Type) {}
 
-  async create(dto: CreateTypeDto): Promise<Type> {
-    return await this.typeRepository.create<Type>(dto);
+  async create(dto: CreateTypeDto, image: string): Promise<Type> {
+    return await this.typeRepository.create<Type>({ ...dto, image });
   }
 
   async findAll() {

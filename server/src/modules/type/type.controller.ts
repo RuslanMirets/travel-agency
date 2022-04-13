@@ -1,18 +1,49 @@
 import { CreateTypeDto } from './dto/create-type.dto';
 import { TypeService } from './type.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Res,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { join } from 'path';
+import { Observable, of } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
+
+export const storage = {
+  storage: diskStorage({
+    destination: './uploads/type-images',
+    filename: (req, file, callback) => {
+      const filename = uuidv4();
+      const extension = file.originalname.split('.').pop();
+      callback(null, `${filename}.${extension}`);
+    },
+  }),
+};
 
 @Controller('type')
 export class TypeController {
   constructor(private typeService: TypeService) {}
 
   @Post()
-  create(@Body() dto: CreateTypeDto) {
-    return this.typeService.create(dto);
+  @UseInterceptors(FileInterceptor('image', storage))
+  create(@Body() dto: CreateTypeDto, @UploadedFile() file: Express.Multer.File) {
+    return this.typeService.create(dto, file.filename);
   }
 
   @Get()
   findAll() {
     return this.typeService.findAll();
+  }
+
+  @Get('/:imagename')
+  findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
+    return of(res.sendFile(join(process.cwd(), 'uploads/type-images/' + imagename)));
   }
 }

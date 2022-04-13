@@ -9,6 +9,12 @@ export class Type extends Model<Type> {
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
 
+  @Column({ type: DataType.STRING(1500), allowNull: false })
+  description: string;
+
+  @Column({ type: DataType.STRING(), allowNull: false })
+  image: string;
+
   @HasMany(() => Tour)
   tour: Tour;
 }
