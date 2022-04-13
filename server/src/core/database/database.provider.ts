@@ -1,3 +1,4 @@
+import { Transport } from './../../modules/transport/models/transport.model';
 import { City } from './../../modules/city/models/city.model';
 import { Country } from './../../modules/country/models/country.model';
 import { Complex } from './../../modules/complex/models/complex.model';
@@ -29,7 +30,7 @@ export const databaseProvider = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Role, UserRole, Tour, Complex, Country, City, Hotel]);
+      sequelize.addModels([User, Role, UserRole, Tour, Complex, Country, City, Hotel, Transport]);
       await sequelize.sync();
       return sequelize;
     },
