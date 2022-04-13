@@ -16,6 +16,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import BugReportIcon from '@mui/icons-material/BugReport';
 import Link from 'next/link';
 import React from 'react';
 import { LinkItem } from '../LinkItem';
@@ -38,6 +39,7 @@ const actions = [
 
 const adminItems = [
   { title: 'Пользователи', href: '/users', icon: <PeopleIcon fontSize="small" /> },
+  { title: 'Тесты', href: '/tests', icon: <BugReportIcon fontSize="small" /> },
 ];
 
 export const Header: React.FC = () => {
@@ -52,7 +54,7 @@ export const Header: React.FC = () => {
 
   const disptach = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
-  const isAdmin = false;
+  const isAdmin = user?.role[0].value === 'ADMIN';
 
   const handleLogout = () => {
     handleClose();

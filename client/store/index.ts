@@ -1,3 +1,5 @@
+import { cityReducer } from './slices/city';
+import { countryReducer } from './slices/country';
 import { alertReducer } from './slices/alert';
 import { userReducer } from './slices/user';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
@@ -8,6 +10,8 @@ export function makeStore() {
     reducer: {
       user: userReducer,
       alert: alertReducer,
+      country: countryReducer,
+      city: cityReducer,
     },
   });
 }
