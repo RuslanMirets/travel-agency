@@ -9,9 +9,9 @@ import slugify from 'slugify';
 export class CountryService {
   constructor(@Inject(COUNTRY_REPOSITORY) private readonly countryRepository: typeof Country) {}
 
-  async create(dto: CreateCountryDto): Promise<Country> {
+  async create(dto: CreateCountryDto, image: string): Promise<Country> {
     const slug = slugify(dto.name, { lower: true });
-    return await this.countryRepository.create<Country>({ ...dto, slug });
+    return await this.countryRepository.create<Country>({ ...dto, slug, image });
   }
 
   async findAll() {

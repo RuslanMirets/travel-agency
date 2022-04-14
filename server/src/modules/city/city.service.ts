@@ -12,13 +12,14 @@ export class CityService {
     private readonly countryService: CountryService,
   ) {}
 
-  async create(dto: CreateCityDto, countryId: number) {
+  async create(dto: CreateCityDto, countryId: number, image: string) {
     const country = await this.countryService.findOneById(countryId);
     const slug = slugify(dto.name, { lower: true });
     const city = await this.cityRepository.create({
       name: dto.name,
       countryId: countryId,
       slug: slug,
+      image: image,
     });
     return { ...city['dataValues'], country };
 

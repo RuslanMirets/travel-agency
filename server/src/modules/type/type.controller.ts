@@ -18,7 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const storage = {
   storage: diskStorage({
-    destination: './uploads/type-images',
+    destination: './uploads/images/type',
     filename: (req, file, callback) => {
       const filename = uuidv4();
       const extension = file.originalname.split('.').pop();
@@ -44,7 +44,7 @@ export class TypeController {
 
   @Get('image/:imagename')
   findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
-    return of(res.sendFile(join(process.cwd(), 'uploads/type-images/' + imagename)));
+    return of(res.sendFile(join(process.cwd(), 'uploads/images/type' + imagename)));
   }
 
   @Get(':slug')

@@ -17,4 +17,7 @@ export class Country extends Model<Country> {
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   slug: string;
+
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  image: string;
 }

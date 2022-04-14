@@ -30,4 +30,7 @@ export class City extends Model<City> {
 
   @Column({ type: DataType.STRING, allowNull: false })
   slug: string;
+
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  image: string;
 }
