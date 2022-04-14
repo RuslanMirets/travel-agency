@@ -1,6 +1,6 @@
 import { CreateTourDto } from './dto/create-tour.dto';
 import { TourService } from './tour.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Hotel } from 'src/core/decorators/hotel.decorator';
 import { Type } from 'src/core/decorators/type.decorator';
 import { Transport } from 'src/core/decorators/transport.decorator';
@@ -24,5 +24,10 @@ export class TourController {
   @Get()
   findAll() {
     return this.tourService.findAll();
+  }
+
+  @Get('type/:id')
+  findAllByType(@Param('id') @Type() typeId: number) {
+    return this.tourService.findAllByType(typeId);
   }
 }
