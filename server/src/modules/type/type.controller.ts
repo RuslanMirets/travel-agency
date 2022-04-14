@@ -42,8 +42,13 @@ export class TypeController {
     return this.typeService.findAll();
   }
 
-  @Get('/:imagename')
+  @Get('image/:imagename')
   findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
     return of(res.sendFile(join(process.cwd(), 'uploads/type-images/' + imagename)));
+  }
+
+  @Get(':slug')
+  findOneBySlug(@Param('slug') slug: string) {
+    return this.typeService.findOneBySlug(slug);
   }
 }

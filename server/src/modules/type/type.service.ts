@@ -18,4 +18,8 @@ export class TypeService {
   async findOneById(id: number): Promise<Type> {
     return await this.typeRepository.findOne<Type>({ where: { id } });
   }
+
+  async findOneBySlug(slug: string): Promise<Type> {
+    return await this.typeRepository.findOne<Type>({ where: { slug } });
+  }
 }

@@ -17,4 +17,7 @@ export class Type extends Model<Type> {
 
   @HasMany(() => Tour)
   tour: Tour;
+
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  slug: string;
 }

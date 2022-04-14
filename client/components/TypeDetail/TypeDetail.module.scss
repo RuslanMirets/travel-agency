@@ -1,0 +1,15 @@
+.root {
+  .paper {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .info {
+    display: flex;
+    gap: 30px;
+
+    img {
+      width: 500px;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { alertReducer } from './slices/alert';
 import { userReducer } from './slices/user';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
+import { typeReducer } from './slices/type';
 
 export function makeStore() {
   return configureStore({
@@ -12,6 +13,7 @@ export function makeStore() {
       alert: alertReducer,
       country: countryReducer,
       city: cityReducer,
+      type: typeReducer,
     },
   });
 }
