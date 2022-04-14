@@ -54,6 +54,6 @@ export class CityController {
 
   @Get('image/:imagename')
   findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
-    return of(res.sendFile(join(process.cwd(), 'uploads/images/city' + imagename)));
+    return of(res.sendFile(join(process.cwd(), 'uploads/images/city/' + imagename)));
   }
 }

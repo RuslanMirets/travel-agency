@@ -44,7 +44,7 @@ export class TypeController {
 
   @Get('image/:imagename')
   findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
-    return of(res.sendFile(join(process.cwd(), 'uploads/images/type' + imagename)));
+    return of(res.sendFile(join(process.cwd(), 'uploads/images/type/' + imagename)));
   }
 
   @Get(':slug')
