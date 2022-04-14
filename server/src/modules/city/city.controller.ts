@@ -16,4 +16,9 @@ export class CityController {
   findAll() {
     return this.cityService.findAll();
   }
+
+  @Get('russia')
+  findAllRussia() {
+    return this.cityService.findAllRussia();
+  }
 }

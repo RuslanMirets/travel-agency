@@ -37,4 +37,8 @@ export class CityService {
   async findOneById(id: number): Promise<City> {
     return await this.cityRepository.findOne<City>({ where: { id } });
   }
+
+  async findAllRussia() {
+    return await this.cityRepository.findAll({ where: { countryId: 1 } });
+  }
 }
