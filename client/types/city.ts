@@ -5,4 +5,6 @@ export interface ICity {
   name: string;
   countryId: number;
   country: ICountry;
+  slug: string;
+  image: string;
 }

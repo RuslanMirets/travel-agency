@@ -22,6 +22,9 @@ export const citySlice = createSlice({
     createCity(state, action) {
       state.city = action.payload;
     },
+    getRussianCities(state, action) {
+      state.cities = action.payload;
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {

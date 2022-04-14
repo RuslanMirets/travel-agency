@@ -26,3 +26,12 @@ export const createCity = (data: ICity) => async (dispatch: AppDispatch) => {
     dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
+
+export const getRussianCities = () => async (dispatch: AppDispatch) => {
+  try {
+    const response = await getAPI('city/russia');
+    dispatch(citySlice.actions.getRussianCities(response.data));
+  } catch (error: any) {
+    dispatch(alertSlice.actions.errors(error.response.data.message));
+  }
+};
