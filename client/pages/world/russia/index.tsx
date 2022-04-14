@@ -1,11 +1,12 @@
 import { NextPage } from 'next';
 import React from 'react';
+import { Title } from '../../../components/Title';
 import MainLayout from '../../../layouts/MainLayout';
 
 const Russia: NextPage = () => {
   return (
     <MainLayout title="Туры по России">
-      <h1>Туры по России</h1>
+      <Title>Отдых и экскурсии по городам России</Title>
     </MainLayout>
   );
 };

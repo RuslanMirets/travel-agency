@@ -56,7 +56,6 @@ export class TourService {
   }
 
   async findAllByType(typeId: number) {
-    await this.typeService.findOneById(typeId);
     return await this.tourRepository.findAll({ where: { typeId } });
   }
 }

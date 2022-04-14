@@ -14,7 +14,6 @@ import { TransportModule } from './modules/transport/transport.module';
 import { ComplexModule } from './modules/complex/complex.module';
 import { CountryModule } from './modules/country/country.module';
 import { ComfortModule } from './modules/comfort/comfort.module';
-import { ContinentModule } from './modules/continent/continent.module';
 
 @Module({
   imports: [
@@ -31,7 +30,6 @@ import { ContinentModule } from './modules/continent/continent.module';
     ComplexModule,
     CountryModule,
     ComfortModule,
-    ContinentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
