@@ -20,7 +20,7 @@ export class Hotel extends Model<Hotel> {
   name: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  address: string;
+  location: string;
 
   @ForeignKey(() => City)
   @Column({ type: DataType.INTEGER, allowNull: false })

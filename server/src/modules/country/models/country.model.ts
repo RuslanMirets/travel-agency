@@ -14,4 +14,7 @@ export class Country extends Model<Country> {
 
   @Column({ type: DataType.BOOLEAN, allowNull: false, defaultValue: true })
   abroad: boolean;
+
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  slug: string;
 }

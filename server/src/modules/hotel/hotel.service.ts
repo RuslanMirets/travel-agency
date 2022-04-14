@@ -18,7 +18,7 @@ export class HotelService {
     const complex = await this.complexService.findOneById(complexId);
     const hotel = await this.hotelRepository.create({
       name: dto.name,
-      address: dto.address,
+      location: dto.location,
       cityId: cityId,
       complexId: complexId,
     });

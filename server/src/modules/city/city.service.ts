@@ -3,6 +3,7 @@ import { CreateCityDto } from './dto/create-city.dto';
 import { City } from './models/city.model';
 import { CITY_REPOSITORY } from './../../core/constants/index';
 import { Inject, Injectable } from '@nestjs/common';
+import slugify from 'slugify';
 
 @Injectable()
 export class CityService {
@@ -13,9 +14,11 @@ export class CityService {
 
   async create(dto: CreateCityDto, countryId: number) {
     const country = await this.countryService.findOneById(countryId);
+    const slug = slugify(dto.name, { lower: true });
     const city = await this.cityRepository.create({
       name: dto.name,
       countryId: countryId,
+      slug: slug,
     });
     return { ...city['dataValues'], country };
 

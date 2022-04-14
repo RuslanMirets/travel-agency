@@ -27,4 +27,7 @@ export class City extends Model<City> {
 
   @HasMany(() => Hotel)
   hotel: Hotel;
+
+  @Column({ type: DataType.STRING, allowNull: false })
+  slug: string;
 }

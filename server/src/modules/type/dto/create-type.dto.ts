@@ -6,7 +6,4 @@ export class CreateTypeDto {
 
   @MinLength(1, { message: 'Введите описание типа' })
   readonly description: string;
-
-  @MinLength(1, { message: 'Введите slug типа' })
-  readonly slug: string;
 }
