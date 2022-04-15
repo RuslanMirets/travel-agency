@@ -3,6 +3,7 @@ import { AppDispatch } from '..';
 import { ICountry } from '../../types/country';
 import { postAPI, getAPI } from '../../utils/fetchData';
 import { alertSlice } from '../slices/alert';
+import axios from 'axios';
 
 export const getCountries = () => async (dispatch: AppDispatch) => {
   try {
@@ -17,6 +18,7 @@ export const createCountry = (data: ICountry) => async (dispatch: AppDispatch) =
   try {
     const response = await postAPI('country', data);
     dispatch(countrySlice.actions.createCountry(response.data));
+    console.log(data);
 
     const getResponse = await getAPI('country');
     dispatch(countrySlice.actions.getCountries(getResponse.data));

@@ -1,17 +1,5 @@
-import {
-  Box,
-  Paper,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Tabs,
-  Typography,
-} from '@mui/material';
+import { Box, Paper, Tab, Tabs } from '@mui/material';
 import React from 'react';
-import { useAppSelector } from '../../store/hooks';
 import { AdminCountry } from '../AdminCountry';
 import { Title } from '../Title';
 import styles from './AdminPanel.module.scss';

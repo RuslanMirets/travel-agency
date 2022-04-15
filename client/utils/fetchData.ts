@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const postAPI = async (url: string, post: object, token?: string) => {
   const response = await axios.post(`http://localhost:5000/${url}`, post, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
   });
   return response;
 };

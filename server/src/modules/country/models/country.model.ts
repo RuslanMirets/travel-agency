@@ -20,4 +20,7 @@ export class Country extends Model<Country> {
 
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   image: string;
+
+  @Column({ type: DataType.STRING(800), allowNull: false })
+  description: string;
 }

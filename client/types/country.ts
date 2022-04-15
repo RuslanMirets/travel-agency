@@ -1,6 +1,7 @@
 export interface ICountry {
-  id: number;
+  id?: number;
   name: string;
   image: string;
-  slug: string;
+  slug?: string;
+  description: string;
 }

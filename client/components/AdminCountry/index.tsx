@@ -15,7 +15,7 @@ import styles from './AdminCountry.module.scss';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { AdminModal } from './AdminModal';
+import { AdminCreateModal } from './AdminCreateModal';
 
 export const AdminCountry: React.FC = () => {
   const { countries } = useAppSelector((state) => state.country);
@@ -64,7 +64,7 @@ export const AdminCountry: React.FC = () => {
           ))}
         </TableBody>
       </Table>
-      <AdminModal open={openModal} onClose={handleToggleModal} />
+      <AdminCreateModal open={openModal} onClose={handleToggleModal} />
     </Box>
   );
 };

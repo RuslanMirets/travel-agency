@@ -7,9 +7,18 @@ interface FormFieldProps {
   label: string;
   type: string;
   disabled?: boolean;
+  multiline?: boolean;
+  maxRows?: any;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({ name, label, type, disabled }) => {
+export const FormField: React.FC<FormFieldProps> = ({
+  name,
+  label,
+  type,
+  disabled,
+  multiline,
+  maxRows,
+}) => {
   const { register, formState } = useFormContext();
 
   return (
@@ -22,6 +31,8 @@ export const FormField: React.FC<FormFieldProps> = ({ name, label, type, disable
       error={!!formState.errors[name]?.message}
       helperText={formState.errors[name]?.message}
       disabled={disabled}
+      multiline={multiline}
+      maxRows={maxRows}
     />
   );
 };
