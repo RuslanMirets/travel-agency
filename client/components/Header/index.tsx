@@ -38,6 +38,7 @@ const actions = [
 ];
 
 const adminItems = [
+  { title: 'Админ панель', href: '/admin', icon: <AdminPanelSettingsIcon fontSize="small" /> },
   { title: 'Пользователи', href: '/users', icon: <PeopleIcon fontSize="small" /> },
   { title: 'Тесты', href: '/tests', icon: <BugReportIcon fontSize="small" /> },
 ];
@@ -116,11 +117,7 @@ export const Header: React.FC = () => {
                   <Link href="/profile">
                     <MenuItem onClick={handleClose} component="a">
                       <ListItemIcon>
-                        {isAdmin ? (
-                          <AdminPanelSettingsIcon fontSize="small" />
-                        ) : (
-                          <PersonIcon fontSize="small" />
-                        )}
+                        <PersonIcon fontSize="small" />
                       </ListItemIcon>
                       <ListItemText>Профиль</ListItemText>
                     </MenuItem>
