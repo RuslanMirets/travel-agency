@@ -26,3 +26,12 @@ export const createCountry = (data: ICountry) => async (dispatch: AppDispatch) =
     dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
+
+export const getAbroadCountries = () => async (dispatch: AppDispatch) => {
+  try {
+    const response = await getAPI('country/abroad');
+    dispatch(countrySlice.actions.getAbroadCountries(response.data));
+  } catch (error: any) {
+    dispatch(alertSlice.actions.errors(error.response.data.message));
+  }
+};

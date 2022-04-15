@@ -22,6 +22,9 @@ export const countrySlice = createSlice({
     createCountry(state, action) {
       state.country = action.payload;
     },
+    getAbroadCountries(state, action) {
+      state.countries = action.payload;
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
