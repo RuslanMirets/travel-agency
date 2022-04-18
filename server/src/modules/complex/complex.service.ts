@@ -14,4 +14,8 @@ export class ComplexService {
   async findAll() {
     return await this.complexRepository.findAll();
   }
+
+  async findOneById(id: number): Promise<Complex> {
+    return await this.complexRepository.findOne<Complex>({ where: { id } });
+  }
 }

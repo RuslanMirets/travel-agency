@@ -6,5 +6,6 @@ import { complexProvider } from './complex.provider';
 @Module({
   providers: [ComplexService, ...complexProvider],
   controllers: [ComplexController],
+  exports: [ComplexService],
 })
 export class ComplexModule {}

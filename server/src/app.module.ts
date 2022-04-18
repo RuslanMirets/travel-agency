@@ -7,6 +7,7 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { RoleModule } from './modules/role/role.module';
 import { ComplexModule } from './modules/complex/complex.module';
+import { HotelModule } from './modules/hotel/hotel.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ComplexModule } from './modules/complex/complex.module';
     AuthModule,
     RoleModule,
     ComplexModule,
+    HotelModule,
   ],
   controllers: [AppController],
   providers: [AppService],
