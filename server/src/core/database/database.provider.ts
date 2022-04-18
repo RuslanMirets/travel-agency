@@ -1,3 +1,4 @@
+import { Complex } from './../../modules/complex/models/complex.model';
 import { UserRole } from './../../modules/role/models/user-role.model';
 import { Role } from './../../modules/role/models/role.model';
 import { Sequelize } from 'sequelize-typescript';
@@ -24,7 +25,7 @@ export const databaseProvider = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Role, UserRole]);
+      sequelize.addModels([User, Role, UserRole, Complex]);
       await sequelize.sync();
       return sequelize;
     },
