@@ -15,8 +15,6 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import BugReportIcon from '@mui/icons-material/BugReport';
 import Link from 'next/link';
 import React from 'react';
 import { LinkItem } from '../LinkItem';
@@ -25,12 +23,7 @@ import styles from './Header.module.scss';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logout } from '../../store/actions/user';
 
-const pages = [
-  { title: 'Главная', href: '/' },
-  { title: 'Отдых за границей', href: '/world/abroad' },
-  { title: 'Отдых в России', href: '/world/russia' },
-  { title: 'Виды отдыха', href: '/tours' },
-];
+const pages = [{ title: 'Главная', href: '/' }];
 
 const actions = [
   { title: 'Войти', href: '/login' },
@@ -38,9 +31,7 @@ const actions = [
 ];
 
 const adminItems = [
-  { title: 'Админ панель', href: '/admin', icon: <AdminPanelSettingsIcon fontSize="small" /> },
   { title: 'Пользователи', href: '/users', icon: <PeopleIcon fontSize="small" /> },
-  { title: 'Тесты', href: '/tests', icon: <BugReportIcon fontSize="small" /> },
 ];
 
 export const Header: React.FC = () => {
