@@ -15,6 +15,7 @@ import {
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import PeopleIcon from '@mui/icons-material/People';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import Link from 'next/link';
 import React from 'react';
 import { LinkItem } from '../LinkItem';
@@ -31,6 +32,7 @@ const actions = [
 ];
 
 const adminItems = [
+  { title: 'Админ-панель', href: '/admin', icon: <AdminPanelSettingsIcon fontSize="small" /> },
   { title: 'Пользователи', href: '/users', icon: <PeopleIcon fontSize="small" /> },
 ];
 

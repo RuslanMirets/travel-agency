@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  gap: 40px;
+
+  .paperTabs {
+    flex-basis: 22%;
+    padding: 10px;
+    height: 100%;
+    button {
+      align-items: baseline;
+    }
+  }
+
+  .paperTab {
+    flex-basis: 78%;
+    height: 100%;
+    padding: 20px;
+  }
+}
