@@ -14,7 +14,6 @@ import { useAppDispatch } from '../../../store/hooks';
 import { createCountry } from '../../../store/actions/country';
 import { FormField } from '../../FormField';
 import { UploadFile } from '../../UploadFile';
-import { uploadCountryImage } from '../../../utils/uploadImage';
 
 interface IProps {
   open: boolean;
@@ -30,12 +29,7 @@ export const AdminCreateModal: React.FC<IProps> = ({ open, onClose }) => {
   });
 
   const onSubmit = (data: any) => {
-    // let result = [];
-    // const test = methods.getValues('image');
-    // result.push({ filename: filename });
-
-    const file = data.image[0];
-    dispatch(createCountry({ ...data, image: file }));
+    dispatch(createCountry(data));
   };
 
   return (
@@ -59,7 +53,7 @@ export const AdminCreateModal: React.FC<IProps> = ({ open, onClose }) => {
             <FormField type="text" label="Название страны" name="name" />
             <FormField
               type="text"
-              label="Название страны"
+              label="Описание страны"
               name="description"
               multiline
               maxRows={5}
