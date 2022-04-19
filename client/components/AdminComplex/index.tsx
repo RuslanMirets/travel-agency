@@ -13,21 +13,24 @@ import { useAppSelector } from '../../store/hooks';
 import styles from './AdminComplex.module.scss';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { AdminCreateModal } from './AdminCreateModal';
-import { TableRowAdmin } from '../TableRowAdmin';
-import { AdminDeleteAllModal } from './AdminDeleteAllModal';
+import { AdminComplexDialog } from './AdminComplexDialog';
+import { AdminComplexResult } from './AdminComplexResult';
 
 export const AdminComplex: React.FC = () => {
   const { complexes } = useAppSelector((state) => state.complex);
 
-  const [openCreateModal, setOpenCreateModal] = useState(false);
-  const handleToggleCreateModal = () => {
-    setOpenCreateModal(!openCreateModal);
+  const [formType, setFormType] = React.useState<'create' | 'deleteAll'>();
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleToggleDialog = () => {
+    setOpenDialog(!openDialog);
   };
 
-  const [openDeleteAllModal, setOpenDeleteAllModal] = useState(false);
-  const handleToggleDeleteAllModal = () => {
-    setOpenDeleteAllModal(!openDeleteAllModal);
+  const openCreateDialog = () => {
+    handleToggleDialog(), setFormType('create');
+  };
+  const openDeleteAllDialog = () => {
+    handleToggleDialog(), setFormType('deleteAll');
   };
 
   return (
@@ -41,14 +44,14 @@ export const AdminComplex: React.FC = () => {
             variant="outlined"
             color="error"
             startIcon={<DeleteIcon />}
-            onClick={handleToggleDeleteAllModal}>
+            onClick={openDeleteAllDialog}>
             Удалить всё
           </Button>
           <Button
             variant="outlined"
             color="success"
             startIcon={<AddIcon />}
-            onClick={handleToggleCreateModal}>
+            onClick={openCreateDialog}>
             Добавить
           </Button>
         </Box>
@@ -62,13 +65,12 @@ export const AdminComplex: React.FC = () => {
           </TableHead>
           <TableBody>
             {complexes.map((complex) => (
-              <TableRowAdmin key={complex.id} complex={complex} />
+              <AdminComplexResult key={complex.id} complex={complex} />
             ))}
           </TableBody>
         </Table>
       </Box>
-      <AdminCreateModal open={openCreateModal} onClose={handleToggleCreateModal} />
-      <AdminDeleteAllModal open={openDeleteAllModal} onClose={handleToggleDeleteAllModal} />
+      <AdminComplexDialog open={openDialog} onClose={handleToggleDialog} formType={formType} />
     </>
   );
 };
