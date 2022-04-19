@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Dialog,
   DialogTitle,
@@ -6,16 +5,15 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Typography,
 } from '@mui/material';
-import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { useForm, FormProvider } from 'react-hook-form';
-import { useAppDispatch } from '../../../store/hooks';
-import { ComplexFormSchema } from '../../../utils/validations';
-import { FormField } from '../../FormField';
-import styles from './AdminUpdateModal.module.scss';
+import React from 'react';
 import { IComplex } from '../../../types/complex';
-import { updateComplex } from '../../../store/actions/complex';
+import styles from './AdminDeleteModal.module.scss';
+import { deleteComplex } from '../../../store/actions/complex';
+import { useAppDispatch } from '../../../store/hooks';
+import { useForm, FormProvider } from 'react-hook-form';
 
 interface IProps {
   open: boolean;
@@ -23,27 +21,20 @@ interface IProps {
   complex: IComplex;
 }
 
-export const AdminUpdateModal: React.FC<IProps> = ({ open, onClose, complex }) => {
+export const AdminDeleteModal: React.FC<IProps> = ({ open, onClose, complex }) => {
   const dispatch = useAppDispatch();
 
-  const methods = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    resolver: yupResolver(ComplexFormSchema),
-    defaultValues: {
-      name: complex.name,
-    },
-  });
+  const methods = useForm();
 
-  const onSubmit = (data: any) => {
-    dispatch(updateComplex(data, complex.id));
+  const onSubmit = () => {
+    dispatch(deleteComplex(complex.id));
     onClose();
   };
 
   return (
     <Dialog className={styles.root} open={open} onClose={onClose} fullWidth>
       <DialogTitle>
-        Новое название строения
+        Название «{complex.name}»
         <IconButton
           onClick={onClose}
           sx={{
@@ -58,14 +49,14 @@ export const AdminUpdateModal: React.FC<IProps> = ({ open, onClose, complex }) =
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <DialogContent classes={{ root: styles.dialogContent }} dividers>
-            <FormField type="text" label="Новое название строения" name="name" />
+            <Typography>Вы действительно хотите удалить это строение?</Typography>
           </DialogContent>
           <DialogActions sx={{ padding: '15px 8px' }}>
             <Button variant="outlined" onClick={onClose}>
               Отмена
             </Button>
-            <Button type="submit" variant="contained" color="info">
-              Обновить
+            <Button type="submit" variant="contained" color="error">
+              Удалить
             </Button>
           </DialogActions>
         </form>

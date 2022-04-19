@@ -12,8 +12,10 @@ import React, { useState } from 'react';
 import { useAppSelector } from '../../store/hooks';
 import styles from './AdminComplex.module.scss';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { AdminCreateModal } from './AdminCreateModal';
 import { TableRowAdmin } from '../TableRowAdmin';
+import { AdminDeleteAllModal } from './AdminDeleteAllModal';
 
 export const AdminComplex: React.FC = () => {
   const { complexes } = useAppSelector((state) => state.complex);
@@ -23,11 +25,25 @@ export const AdminComplex: React.FC = () => {
     setOpenCreateModal(!openCreateModal);
   };
 
+  const [openDeleteAllModal, setOpenDeleteAllModal] = useState(false);
+  const handleToggleDeleteAllModal = () => {
+    setOpenDeleteAllModal(!openDeleteAllModal);
+  };
+
   return (
     <>
       <Box className={styles.root}>
         <Box className={styles.head}>
-          <Typography variant="h6">Список строений</Typography>
+          <Typography variant="h6" component="h6">
+            Список строений
+          </Typography>
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={<DeleteIcon />}
+            onClick={handleToggleDeleteAllModal}>
+            Удалить всё
+          </Button>
           <Button
             variant="outlined"
             color="success"
@@ -52,6 +68,7 @@ export const AdminComplex: React.FC = () => {
         </Table>
       </Box>
       <AdminCreateModal open={openCreateModal} onClose={handleToggleCreateModal} />
+      <AdminDeleteAllModal open={openDeleteAllModal} onClose={handleToggleDeleteAllModal} />
     </>
   );
 };

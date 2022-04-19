@@ -19,6 +19,6 @@ export class Hotel extends Model<Hotel> {
   @Column({ type: DataType.INTEGER, allowNull: false })
   complexId: number;
 
-  @BelongsTo(() => Complex)
+  @BelongsTo(() => Complex, { onDelete: 'CASCADE' })
   complex: Complex;
 }

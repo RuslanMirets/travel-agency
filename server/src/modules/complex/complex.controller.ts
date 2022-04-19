@@ -1,6 +1,6 @@
 import { CreateComplexDto } from './dto/create-complex.dto';
 import { ComplexService } from './complex.service';
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { UpdateComplexDto } from './dto/update-complex.dto';
 
 @Controller('complex')
@@ -20,5 +20,15 @@ export class ComplexController {
   @Patch(':id')
   update(@Body() dto: UpdateComplexDto, @Param('id') complexId: number) {
     return this.complexService.update(dto, complexId);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') complexId: number) {
+    return this.complexService.delete(complexId);
+  }
+
+  @Delete()
+  deleteAll() {
+    return this.complexService.deleteAll();
   }
 }

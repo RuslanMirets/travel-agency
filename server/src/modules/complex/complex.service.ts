@@ -24,4 +24,12 @@ export class ComplexService {
     await this.complexRepository.update({ name: dto.name }, { where: { id: complexId } });
     return dto;
   }
+
+  async delete(complexId: number) {
+    return await this.complexRepository.destroy({ where: { id: complexId } });
+  }
+
+  async deleteAll() {
+    return this.complexRepository.destroy({ where: {} });
+  }
 }
