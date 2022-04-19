@@ -26,9 +26,11 @@ export const AdminComplexResult: React.FC<IProps> = ({ complex }) => {
 
   return (
     <>
-      <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+      <TableRow>
         <TableCell>{complex.id}</TableCell>
         <TableCell>{complex.name}</TableCell>
+        <TableCell>{complex.createdAt}</TableCell>
+        <TableCell>{complex.updatedAt}</TableCell>
         <TableCell align="right">
           <IconButton color="info" onClick={openUpdateDialog}>
             <EditIcon />

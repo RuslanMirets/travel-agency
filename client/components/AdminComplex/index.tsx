@@ -5,6 +5,7 @@ import {
   TableBody,
   TableCell,
   TableHead,
+  TablePagination,
   TableRow,
   Typography,
 } from '@mui/material';
@@ -33,6 +34,18 @@ export const AdminComplex: React.FC = () => {
     handleToggleDialog(), setFormType('deleteAll');
   };
 
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = React.useState(0);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <>
       <Box className={styles.root}>
@@ -55,20 +68,34 @@ export const AdminComplex: React.FC = () => {
             Добавить
           </Button>
         </Box>
-        <Table>
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell>Название</TableCell>
+              <TableCell>Дата создания</TableCell>
+              <TableCell>Дата обновления</TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {complexes.map((complex) => (
+            {(rowsPerPage > 0
+              ? complexes.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : complexes
+            ).map((complex) => (
               <AdminComplexResult key={complex.id} complex={complex} />
             ))}
           </TableBody>
         </Table>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={complexes.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Box>
       <AdminComplexDialog open={openDialog} onClose={handleToggleDialog} formType={formType} />
     </>
