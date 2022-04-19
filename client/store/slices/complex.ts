@@ -22,6 +22,9 @@ export const complexSlice = createSlice({
     createComplex(state, action: PayloadAction<IComplex>) {
       state.complex = action.payload;
     },
+    updateComplex(state, action: PayloadAction<IComplex>) {
+      state.complex = action.payload;
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {

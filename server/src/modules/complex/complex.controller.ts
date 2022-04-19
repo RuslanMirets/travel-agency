@@ -1,6 +1,7 @@
 import { CreateComplexDto } from './dto/create-complex.dto';
 import { ComplexService } from './complex.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { UpdateComplexDto } from './dto/update-complex.dto';
 
 @Controller('complex')
 export class ComplexController {
@@ -14,5 +15,10 @@ export class ComplexController {
   @Get()
   findAll() {
     return this.complexService.findAll();
+  }
+
+  @Patch(':id')
+  update(@Body() dto: UpdateComplexDto, @Param('id') complexId: number) {
+    return this.complexService.update(dto, complexId);
   }
 }

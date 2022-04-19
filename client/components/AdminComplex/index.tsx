@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -12,17 +11,16 @@ import {
 import React, { useState } from 'react';
 import { useAppSelector } from '../../store/hooks';
 import styles from './AdminComplex.module.scss';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { AdminCreateModal } from './AdminCreateModal';
+import { TableRowAdmin } from '../TableRowAdmin';
 
 export const AdminComplex: React.FC = () => {
   const { complexes } = useAppSelector((state) => state.complex);
 
-  const [openModal, setOpenModal] = useState(false);
-  const handleToggleModal = () => {
-    setOpenModal(!openModal);
+  const [openCreateModal, setOpenCreateModal] = useState(false);
+  const handleToggleCreateModal = () => {
+    setOpenCreateModal(!openCreateModal);
   };
 
   return (
@@ -34,7 +32,7 @@ export const AdminComplex: React.FC = () => {
             variant="outlined"
             color="success"
             startIcon={<AddIcon />}
-            onClick={handleToggleModal}>
+            onClick={handleToggleCreateModal}>
             Добавить
           </Button>
         </Box>
@@ -48,23 +46,12 @@ export const AdminComplex: React.FC = () => {
           </TableHead>
           <TableBody>
             {complexes.map((complex) => (
-              <TableRow key={complex.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell>{complex.id}</TableCell>
-                <TableCell>{complex.name}</TableCell>
-                <TableCell align="right">
-                  <IconButton color="info">
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton color="error">
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
+              <TableRowAdmin key={complex.id} complex={complex} />
             ))}
           </TableBody>
         </Table>
       </Box>
-      <AdminCreateModal open={openModal} onClose={handleToggleModal} />
+      <AdminCreateModal open={openCreateModal} onClose={handleToggleCreateModal} />
     </>
   );
 };

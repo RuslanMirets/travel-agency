@@ -1,3 +1,4 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Dialog,
   DialogTitle,
@@ -8,38 +9,41 @@ import {
 } from '@mui/material';
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-import { FormProvider, useForm } from 'react-hook-form';
-import styles from './AdminCreateModal.module.scss';
+import { useForm, FormProvider } from 'react-hook-form';
 import { useAppDispatch } from '../../../store/hooks';
-import { FormField } from '../../FormField';
-import { createComplex } from '../../../store/actions/complex';
 import { ComplexFormSchema } from '../../../utils/validations';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { FormField } from '../../FormField';
+import styles from './AdminUpdateModal.module.scss';
+import { IComplex } from '../../../types/complex';
+import { updateComplex } from '../../../store/actions/complex';
 
 interface IProps {
   open: boolean;
   onClose: () => void;
+  complex: IComplex;
 }
 
-export const AdminCreateModal: React.FC<IProps> = ({ open, onClose }) => {
+export const AdminUpdateModal: React.FC<IProps> = ({ open, onClose, complex }) => {
   const dispatch = useAppDispatch();
 
   const methods = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(ComplexFormSchema),
+    defaultValues: {
+      name: complex.name,
+    },
   });
 
   const onSubmit = (data: any) => {
-    dispatch(createComplex(data));
-    methods.reset();
+    dispatch(updateComplex(data, complex.id));
     onClose();
   };
 
   return (
     <Dialog className={styles.root} open={open} onClose={onClose} fullWidth>
       <DialogTitle>
-        Добавление строения
+        Новое название строения
         <IconButton
           onClick={onClose}
           sx={{
@@ -54,14 +58,14 @@ export const AdminCreateModal: React.FC<IProps> = ({ open, onClose }) => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <DialogContent classes={{ root: styles.dialogContent }} dividers>
-            <FormField type="text" label="Название строения" name="name" />
+            <FormField type="text" label="Новое название строения" name="name" />
           </DialogContent>
           <DialogActions sx={{ padding: '15px 8px' }}>
             <Button variant="outlined" onClick={onClose}>
               Отмена
             </Button>
             <Button type="submit" variant="contained" color="success">
-              Добавить
+              Обновить
             </Button>
           </DialogActions>
         </form>
