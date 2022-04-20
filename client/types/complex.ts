@@ -3,4 +3,5 @@ export interface IComplex {
   name: string;
   createdAt: Date;
   updatedAt: Date;
+  [key: string]: any;
 }

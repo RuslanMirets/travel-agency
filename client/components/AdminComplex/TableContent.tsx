@@ -6,10 +6,10 @@ import { AdminComplexDialog } from './AdminComplexDialog';
 import { IComplex } from '../../types/complex';
 
 interface IProps {
-  complex: IComplex;
+  complex: IComplex | any;
 }
 
-export const AdminComplexResult: React.FC<IProps> = ({ complex }) => {
+export const TableContent: React.FC<IProps> = ({ complex }) => {
   const [formType, setFormType] = React.useState<'update' | 'delete'>();
 
   const [openDialog, setOpenDialog] = useState(false);
@@ -29,8 +29,8 @@ export const AdminComplexResult: React.FC<IProps> = ({ complex }) => {
       <TableRow>
         <TableCell>{complex.id}</TableCell>
         <TableCell>{complex.name}</TableCell>
-        <TableCell>{complex.createdAt}</TableCell>
-        <TableCell>{complex.updatedAt}</TableCell>
+        <TableCell>{new Date(complex.createdAt).toLocaleString()}</TableCell>
+        <TableCell>{new Date(complex.updatedAt).toLocaleString()}</TableCell>
         <TableCell align="right">
           <IconButton color="info" onClick={openUpdateDialog}>
             <EditIcon />
