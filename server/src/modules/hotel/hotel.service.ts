@@ -24,4 +24,8 @@ export class HotelService {
   async findAll() {
     return await this.hotelRepository.findAll({ include: { all: true } });
   }
+
+  async findOneById(hotelId: number) {
+    return await this.hotelRepository.findOne({ where: { id: hotelId } });
+  }
 }

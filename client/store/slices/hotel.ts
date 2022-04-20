@@ -22,6 +22,9 @@ export const hotelSlice = createSlice({
     createHotel(state, action: PayloadAction<IHotel>) {
       state.hotel = action.payload;
     },
+    getHotelById(state, action) {
+      state.hotel = action.payload;
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {

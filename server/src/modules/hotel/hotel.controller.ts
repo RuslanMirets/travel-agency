@@ -51,4 +51,9 @@ export class HotelController {
   findProfileImage(@Param('imagename') imagename, @Res() res): Observable<Object> {
     return of(res.sendFile(join(process.cwd(), 'uploads/images/hotel/' + imagename)));
   }
+
+  @Get(':id')
+  findOneById(@Param('id') hotelId: number) {
+    return this.hotelService.findOneById(hotelId);
+  }
 }

@@ -6,6 +6,7 @@ import { IHotel } from '../../../types/hotel';
 import { AdminHotelDialog } from './AdminHotelDialog';
 import { hotelImage } from '../../../utils/constants';
 import styles from './AdminHotel.module.scss';
+import { LinkItem } from '../../LinkItem';
 
 interface IProps {
   hotel: IHotel;
@@ -41,7 +42,9 @@ export const TableContent: React.FC<IProps> = ({ hotel }) => {
         <TableCell align="right">
           <img className={styles.image} src={hotelImage + hotel.image} alt={hotel.name} />
         </TableCell>
-        <TableCell align="right">{hotel.name}</TableCell>
+        <TableCell align="right">
+          <LinkItem href={`/admin/hotel/${hotel.id}`}>{hotel.name}</LinkItem>
+        </TableCell>
         <TableCell align="right">{hotel.complex.name}</TableCell>
         <TableCell align="right">{hotel.location}</TableCell>
         <TableCell align="right">{new Date(hotel.createdAt).toLocaleString()}</TableCell>

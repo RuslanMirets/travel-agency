@@ -31,3 +31,12 @@ export const createHotel = (data: IHotel) => async (dispatch: AppDispatch) => {
     dispatch(alertSlice.actions.errors(error.response.data.message));
   }
 };
+
+export const getHotelById = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await getAPI(`hotel/${id}`);
+    dispatch(hotelSlice.actions.getHotelById(response.data));
+  } catch (error: any) {
+    console.log(error.response.data.message);
+  }
+};

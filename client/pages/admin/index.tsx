@@ -1,11 +1,10 @@
 import { NextPage } from 'next';
-import React from 'react';
-import { AdminPanel } from '../components/AdminPanel';
-import { Title } from '../components/Title';
-import MainLayout from '../layouts/MainLayout';
-import { wrapper } from '../store';
-import { getComplexes } from '../store/actions/complex';
-import { getHotels } from '../store/actions/hotel';
+import { AdminPanel } from '../../components/AdminPanel';
+import { Title } from '../../components/Title';
+import MainLayout from '../../layouts/MainLayout';
+import { wrapper } from '../../store';
+import { getComplexes } from '../../store/actions/complex';
+import { getHotels } from '../../store/actions/hotel';
 
 const Admin: NextPage = () => {
   return (
