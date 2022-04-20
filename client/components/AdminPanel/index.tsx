@@ -1,6 +1,7 @@
 import { Box, Paper, Tab, Tabs } from '@mui/material';
 import React from 'react';
-import { AdminComplex } from '../AdminComplex';
+import { AdminComplex } from './AdminComplex';
+import { AdminHotel } from './AdminHotel';
 import styles from './AdminPanel.module.scss';
 
 interface TabPanelProps {
@@ -33,23 +34,19 @@ export const AdminPanel: React.FC = () => {
 
   return (
     <Box className={styles.root}>
-      <Paper className={styles.paperTabs}>
-        <Tabs
-          orientation="vertical"
-          value={value}
-          onChange={handleChange}
-          sx={{ borderRight: 1, borderColor: 'divider' }}>
-          <Tab label="Строение" />
-          <Tab label="Отель" />
-        </Tabs>
-      </Paper>
+      <Paper className={styles.paper}>
+        <Box className={styles.boxTabs} sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange}>
+            <Tab label="Строение" />
+            <Tab label="Отель" />
+          </Tabs>
+        </Box>
 
-      <Paper className={styles.paperTab}>
         <TabPanel value={value} index={0}>
           <AdminComplex />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          2
+          <AdminHotel />
         </TabPanel>
       </Paper>
     </Box>

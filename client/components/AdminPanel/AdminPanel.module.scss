@@ -1,19 +1,11 @@
 .root {
-  display: flex;
-  gap: 40px;
-
-  .paperTabs {
-    flex-basis: 22%;
-    padding: 10px;
-    height: 100%;
-    button {
-      align-items: baseline;
-    }
+  .paper {
+    padding: 20px 20px 20px 20px;
+    width: 100%;
+    overflow-x: auto;
   }
 
-  .paperTab {
-    flex-basis: 78%;
-    height: 100%;
-    padding: 20px;
+  .boxTabs {
+    margin-bottom: 40px;
   }
 }

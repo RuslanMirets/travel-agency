@@ -18,3 +18,9 @@ export const RegisterFormSchema = yup
 export const ComplexFormSchema = yup.object().shape({
   name: yup.string().required('Введите название комплекса'),
 });
+
+export const HotelFormSchema = yup.object().shape({
+  name: yup.string().required('Введите название отеля'),
+  location: yup.string().required('Введите расположение отеля'),
+  complexId: yup.number().required('Выберите строение'),
+});

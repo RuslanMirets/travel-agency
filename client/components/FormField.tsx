@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-interface FormFieldProps {
+interface IProps {
   name: string;
   label: string;
   type: string;
@@ -11,7 +11,7 @@ interface FormFieldProps {
   maxRows?: any;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({
+export const FormField: React.FC<IProps> = ({
   name,
   label,
   type,

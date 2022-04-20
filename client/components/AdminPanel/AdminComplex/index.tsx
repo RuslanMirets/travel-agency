@@ -1,6 +1,6 @@
 import { Box, Button, Table, TableBody, TablePagination, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from '../../../store/hooks';
 import styles from './AdminComplex.module.scss';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -106,6 +106,7 @@ export const AdminComplex: React.FC = () => {
             {stableSort(complexes, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((complex) => (
+                //@ts-ignore
                 <TableContent key={complex.id} complex={complex} />
               ))}
           </TableBody>

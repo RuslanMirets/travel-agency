@@ -1,0 +1,25 @@
+.root {
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 10px;
+
+    h6 {
+      flex-grow: 1;
+      font-size: 22px;
+    }
+  }
+
+  .actionCell {
+    white-space: nowrap;
+  }
+
+  .image {
+    display: block;
+    width: 150px;
+    height: 100px;
+    margin-left: auto;
+  }
+}

@@ -1,22 +1,23 @@
 import { DialogContent, DialogActions, Button, Typography } from '@mui/material';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { deleteAllComplexes } from '../../../../store/actions/complex';
-import { useAppDispatch } from '../../../../store/hooks';
-import styles from '../AdminComplexDialog.module.scss';
+import { useAppDispatch } from '../../../../../store/hooks';
+import { IHotel } from '../../../../../types/hotel';
+import styles from '../AdminHotelDialog.module.scss';
 
 interface IProps {
   onClose: () => void;
+  hotel: IHotel;
 }
 
-export const DeleteAllForm: React.FC<IProps> = ({ onClose }) => {
+export const DeleteForm: React.FC<IProps> = ({ onClose, hotel }) => {
   const dispatch = useAppDispatch();
 
   const methods = useForm();
 
   const onSubmit = () => {
-    dispatch(deleteAllComplexes());
-    onClose();
+    // dispatch(deletehotel(hotel.id));
+    // onClose();
   };
 
   return (
@@ -24,7 +25,7 @@ export const DeleteAllForm: React.FC<IProps> = ({ onClose }) => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <DialogContent className={styles.content} dividers>
-            <Typography>Вы действительно хотите удалить все строения?</Typography>
+            <Typography>Вы действительно хотите удалить это строение?</Typography>
           </DialogContent>
           <DialogActions className={styles.actions}>
             <Button variant="outlined" onClick={onClose}>

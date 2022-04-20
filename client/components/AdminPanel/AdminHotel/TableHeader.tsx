@@ -18,8 +18,16 @@ const headCells: IHeadCell[] = [
     label: 'ID',
   },
   {
+    id: 'image',
+    label: 'Изображение',
+  },
+  {
     id: 'name',
     label: 'Название',
+  },
+  {
+    id: 'location',
+    label: 'Расположение',
   },
   {
     id: 'createdAt',
@@ -39,8 +47,9 @@ export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSor
   return (
     <TableHead>
       <TableRow>
+        <TableCell>Actions</TableCell>
         {headCells.map((headCell) => (
-          <TableCell key={headCell.id}>
+          <TableCell key={headCell.id} sx={{ whiteSpace: 'nowrap' }} align="right">
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'desc'}
@@ -49,7 +58,6 @@ export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSor
             </TableSortLabel>
           </TableCell>
         ))}
-        <TableCell></TableCell>
       </TableRow>
     </TableHead>
   );
