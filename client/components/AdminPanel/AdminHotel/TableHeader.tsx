@@ -13,30 +13,13 @@ interface IHeadCell {
 }
 
 const headCells: IHeadCell[] = [
-  {
-    id: 'id',
-    label: 'ID',
-  },
-  {
-    id: 'image',
-    label: 'Изображение',
-  },
-  {
-    id: 'name',
-    label: 'Название',
-  },
-  {
-    id: 'location',
-    label: 'Расположение',
-  },
-  {
-    id: 'createdAt',
-    label: 'Дата создания',
-  },
-  {
-    id: 'updatedAt',
-    label: 'Дата обновления',
-  },
+  { id: 'id', label: 'ID' },
+  { id: 'image', label: 'Изображение' },
+  { id: 'name', label: 'Название' },
+  { id: 'complex', label: 'Строение' },
+  { id: 'location', label: 'Расположение' },
+  { id: 'createdAt', label: 'Дата создания' },
+  { id: 'updatedAt', label: 'Дата обновления' },
 ];
 
 export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSort }) => {

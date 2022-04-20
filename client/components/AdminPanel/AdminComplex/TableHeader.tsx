@@ -13,22 +13,10 @@ interface IHeadCell {
 }
 
 const headCells: IHeadCell[] = [
-  {
-    id: 'id',
-    label: 'ID',
-  },
-  {
-    id: 'name',
-    label: 'Название',
-  },
-  {
-    id: 'createdAt',
-    label: 'Дата создания',
-  },
-  {
-    id: 'updatedAt',
-    label: 'Дата обновления',
-  },
+  { id: 'id', label: 'ID' },
+  { id: 'name', label: 'Название' },
+  { id: 'createdAt', label: 'Дата создания' },
+  { id: 'updatedAt', label: 'Дата обновления' },
 ];
 
 export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSort }) => {
@@ -39,7 +27,7 @@ export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSor
   return (
     <TableHead>
       <TableRow>
-      <TableCell>Actions</TableCell>
+        <TableCell>Actions</TableCell>
         {headCells.map((headCell) => (
           <TableCell key={headCell.id} align="right">
             <TableSortLabel

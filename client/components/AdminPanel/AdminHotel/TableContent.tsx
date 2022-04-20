@@ -42,6 +42,7 @@ export const TableContent: React.FC<IProps> = ({ hotel }) => {
           <img className={styles.image} src={hotelImage + hotel.image} alt={hotel.name} />
         </TableCell>
         <TableCell align="right">{hotel.name}</TableCell>
+        <TableCell align="right">{hotel.complex.name}</TableCell>
         <TableCell align="right">{hotel.location}</TableCell>
         <TableCell align="right">{new Date(hotel.createdAt).toLocaleString()}</TableCell>
         <TableCell align="right">{new Date(hotel.updatedAt).toLocaleString()}</TableCell>

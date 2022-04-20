@@ -22,6 +22,6 @@ export class HotelService {
   }
 
   async findAll() {
-    return await this.hotelRepository.findAll();
+    return await this.hotelRepository.findAll({ include: { all: true } });
   }
 }
