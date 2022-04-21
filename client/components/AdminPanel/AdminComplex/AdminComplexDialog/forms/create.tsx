@@ -28,22 +28,20 @@ export const CreateForm: React.FC<IProps> = ({ onClose }) => {
   };
 
   return (
-    <>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <DialogContent className={styles.content} dividers>
-            <FormField type="text" label="Название строения" name="name" />
-          </DialogContent>
-          <DialogActions className={styles.actions}>
-            <Button variant="outlined" onClick={onClose}>
-              Отмена
-            </Button>
-            <Button type="submit" variant="contained" color="success">
-              Добавить
-            </Button>
-          </DialogActions>
-        </form>
-      </FormProvider>
-    </>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <DialogContent className={styles.content} dividers>
+          <FormField type="text" label="Название строения" name="name" />
+        </DialogContent>
+        <DialogActions className={styles.actions}>
+          <Button variant="outlined" onClick={onClose}>
+            Отмена
+          </Button>
+          <Button type="submit" variant="contained" color="success">
+            Добавить
+          </Button>
+        </DialogActions>
+      </form>
+    </FormProvider>
   );
 };

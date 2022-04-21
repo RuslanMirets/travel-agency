@@ -60,9 +60,37 @@ export class HotelController {
     return this.hotelService.findOneById(hotelId);
   }
 
-  @Patch(':id')
-  update(@Body() dto: UpdateHotelDto, @Param('id') complexId: number) {
-    return this.hotelService.update(dto, complexId);
+  // Update all
+  // @Patch(':id')
+  // @UseInterceptors(FileInterceptor('image', storage))
+  // update(
+  //   @Body() dto: UpdateHotelDto,
+  //   @Param('id') hotelId: number,
+  //   @Complex() complexId: number,
+  //   @UploadedFile() file: Express.Multer.File,
+  // ) {
+  //   return this.hotelService.update(dto, hotelId, complexId, file.filename);
+  // }
+
+  @Patch('name/:id')
+  updateName(@Body() dto: UpdateHotelDto, @Param('id') hotelId: number) {
+    return this.hotelService.updateName(dto, hotelId);
+  }
+
+  @Patch('location/:id')
+  updateLocation(@Body() dto: UpdateHotelDto, @Param('id') hotelId: number) {
+    return this.hotelService.updateLocation(dto, hotelId);
+  }
+
+  @Patch('complex/:id')
+  updateComplex(@Complex() complexId: number, @Param('id') hotelId: number) {
+    return this.hotelService.updateComplex(complexId, hotelId);
+  }
+
+  @Patch('image/:id')
+  @UseInterceptors(FileInterceptor('image', storage))
+  updateImage(@UploadedFile() file: Express.Multer.File, @Param('id') hotelId: number) {
+    return this.hotelService.updateImage(file.filename, hotelId);
   }
 
   @Delete(':id')

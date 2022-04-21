@@ -32,22 +32,20 @@ export const UpdateForm: React.FC<IProps> = ({ onClose, complex }) => {
   };
 
   return (
-    <>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <DialogContent className={styles.content} dividers>
-            <FormField type="text" label="Новое название строения" name="name" />
-          </DialogContent>
-          <DialogActions className={styles.actions}>
-            <Button variant="outlined" onClick={onClose}>
-              Отмена
-            </Button>
-            <Button type="submit" variant="contained" color="info">
-              Обновить
-            </Button>
-          </DialogActions>
-        </form>
-      </FormProvider>
-    </>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <DialogContent className={styles.content} dividers>
+          <FormField type="text" label="Новое название строения" name="name" />
+        </DialogContent>
+        <DialogActions className={styles.actions}>
+          <Button variant="outlined" onClick={onClose}>
+            Отмена
+          </Button>
+          <Button type="submit" variant="contained" color="info">
+            Обновить
+          </Button>
+        </DialogActions>
+      </form>
+    </FormProvider>
   );
 };

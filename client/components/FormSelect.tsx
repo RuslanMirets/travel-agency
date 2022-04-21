@@ -5,9 +5,10 @@ import { useFormContext } from 'react-hook-form';
 interface IProps {
   name: string;
   label: string;
+  defaultValue?: any;
 }
 
-export const FormSelect: React.FC<IProps> = ({ children, name, label }) => {
+export const FormSelect: React.FC<IProps> = ({ children, name, label, defaultValue }) => {
   const { register, formState } = useFormContext();
 
   return (
@@ -15,7 +16,7 @@ export const FormSelect: React.FC<IProps> = ({ children, name, label }) => {
       size="small"
       select
       fullWidth
-      defaultValue=""
+      defaultValue={defaultValue}
       label={label}
       inputProps={register(name)}
       error={!!formState.errors[name]?.message}

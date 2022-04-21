@@ -56,51 +56,43 @@ export const CreateForm: React.FC<IProps> = ({ onClose }) => {
   };
 
   return (
-    <>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <DialogContent className={styles.content} dividers>
-            <FormSelect name="complexId" label="Строение">
-              {complexes.map((complex) => (
-                <MenuItem key={complex.id} value={complex.id}>
-                  {complex.name}
-                </MenuItem>
-              ))}
-            </FormSelect>
-            <FormField type="text" label="Название отеля" name="name" />
-            <FormField
-              type="text"
-              label="Расположение отеля"
-              name="location"
-              multiline
-              maxRows={4}
-            />
-            <div className={styles.upload}>
-              <Typography className={styles.uploadTitle} variant="subtitle1">
-                Изображение:
-              </Typography>
-              <div className={styles.image}>
-                <img
-                  src={image ? URL.createObjectURL(image) : '/assets/images/default-image.jpg'}
-                  alt="Image"
-                />
-                <IconButton>
-                  <PhotoCameraIcon />
-                  <FormFile name="image" onChange={changeImage} />
-                </IconButton>
-              </div>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <DialogContent className={styles.content} dividers>
+          <FormSelect name="complexId" label="Строение">
+            {complexes.map((complex) => (
+              <MenuItem key={complex.id} value={complex.id}>
+                {complex.name}
+              </MenuItem>
+            ))}
+          </FormSelect>
+          <FormField type="text" label="Название отеля" name="name" />
+          <FormField type="text" label="Расположение отеля" name="location" multiline maxRows={4} />
+          <div className={styles.upload}>
+            <Typography className={styles.uploadTitle} variant="subtitle1">
+              Изображение:
+            </Typography>
+            <div className={styles.image}>
+              <img
+                src={image ? URL.createObjectURL(image) : '/assets/images/default-image.jpg'}
+                alt="Image"
+              />
+              <IconButton>
+                <PhotoCameraIcon />
+                <FormFile name="image" onChange={changeImage} />
+              </IconButton>
             </div>
-          </DialogContent>
-          <DialogActions className={styles.actions}>
-            <Button variant="outlined" onClick={onClose}>
-              Отмена
-            </Button>
-            <Button type="submit" variant="contained" color="success">
-              Добавить
-            </Button>
-          </DialogActions>
-        </form>
-      </FormProvider>
-    </>
+          </div>
+        </DialogContent>
+        <DialogActions className={styles.actions}>
+          <Button variant="outlined" onClick={onClose}>
+            Отмена
+          </Button>
+          <Button type="submit" variant="contained" color="success">
+            Добавить
+          </Button>
+        </DialogActions>
+      </form>
+    </FormProvider>
   );
 };

@@ -30,9 +30,33 @@ export class HotelService {
     return await this.hotelRepository.findOne({ where: { id: hotelId }, include: { all: true } });
   }
 
-  async update(dto: UpdateHotelDto, hotelId: number) {
+  // Update all
+  // async update(dto: UpdateHotelDto, hotelId: number, complexId: number, image: string) {
+  //   await this.hotelRepository.update(
+  //     { name: dto.name, location: dto.location, complexId: complexId, image: image },
+  //     { where: { id: hotelId } },
+  //   );
+  //   return dto;
+  // }
+
+  async updateName(dto: UpdateHotelDto, hotelId: number) {
     await this.hotelRepository.update({ name: dto.name }, { where: { id: hotelId } });
     return dto;
+  }
+
+  async updateLocation(dto: UpdateHotelDto, hotelId: number) {
+    await this.hotelRepository.update({ location: dto.location }, { where: { id: hotelId } });
+    return dto;
+  }
+
+  async updateComplex(complexId: number, hotelId: number) {
+    await this.hotelRepository.update({ complexId: complexId }, { where: { id: hotelId } });
+    return complexId;
+  }
+
+  async updateImage(image: string, hotelId: number) {
+    await this.hotelRepository.update({ image: image }, { where: { id: hotelId } });
+    return image;
   }
 
   async delete(hotelId: number) {

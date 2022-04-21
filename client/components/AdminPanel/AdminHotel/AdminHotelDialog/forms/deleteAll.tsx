@@ -20,22 +20,20 @@ export const DeleteAllForm: React.FC<IProps> = ({ onClose }) => {
   };
 
   return (
-    <>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <DialogContent className={styles.content} dividers>
-            <Typography>Вы действительно хотите удалить все отели?</Typography>
-          </DialogContent>
-          <DialogActions className={styles.actions}>
-            <Button variant="outlined" onClick={onClose}>
-              Отмена
-            </Button>
-            <Button type="submit" variant="contained" color="error">
-              Удалить
-            </Button>
-          </DialogActions>
-        </form>
-      </FormProvider>
-    </>
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        <DialogContent className={styles.content} dividers>
+          <Typography>Вы действительно хотите удалить все отели?</Typography>
+        </DialogContent>
+        <DialogActions className={styles.actions}>
+          <Button variant="outlined" onClick={onClose}>
+            Отмена
+          </Button>
+          <Button type="submit" variant="contained" color="error">
+            Удалить
+          </Button>
+        </DialogActions>
+      </form>
+    </FormProvider>
   );
 };

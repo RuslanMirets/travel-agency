@@ -4,9 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react';
 import { IHotel } from '../../../types/hotel';
 import { AdminHotelDialog } from './AdminHotelDialog';
-import { hotelImage } from '../../../utils/constants';
 import styles from './AdminHotel.module.scss';
-import { LinkItem } from '../../LinkItem';
 
 interface IProps {
   hotel: IHotel;
