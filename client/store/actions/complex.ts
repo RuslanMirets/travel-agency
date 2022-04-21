@@ -31,7 +31,7 @@ export const updateComplex = (data: IComplex, id: number) => async (dispatch: Ap
   try {
     const response = await patchAPI(`complex/${id}`, data);
     dispatch(complexSlice.actions.updateComplex(response.data));
-    dispatch(alertSlice.actions.success('Строение обновлено'));
+    dispatch(alertSlice.actions.success('Строение изменено'));
 
     const getResponse = await getAPI('complex');
     dispatch(complexSlice.actions.getComplexes(getResponse.data));

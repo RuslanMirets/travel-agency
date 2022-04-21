@@ -1,6 +1,7 @@
 import { DialogContent, DialogActions, Button, Typography } from '@mui/material';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { deleteHotel } from '../../../../../store/actions/hotel';
 import { useAppDispatch } from '../../../../../store/hooks';
 import { IHotel } from '../../../../../types/hotel';
 import styles from '../AdminHotelDialog.module.scss';
@@ -16,8 +17,8 @@ export const DeleteForm: React.FC<IProps> = ({ onClose, hotel }) => {
   const methods = useForm();
 
   const onSubmit = () => {
-    // dispatch(deletehotel(hotel.id));
-    // onClose();
+    dispatch(deleteHotel(hotel.id));
+    onClose();
   };
 
   return (
@@ -25,7 +26,7 @@ export const DeleteForm: React.FC<IProps> = ({ onClose, hotel }) => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <DialogContent className={styles.content} dividers>
-            <Typography>Вы действительно хотите удалить это строение?</Typography>
+            <Typography>Вы действительно хотите удалить этот отель?</Typography>
           </DialogContent>
           <DialogActions className={styles.actions}>
             <Button variant="outlined" onClick={onClose}>

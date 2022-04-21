@@ -22,6 +22,15 @@ export const hotelSlice = createSlice({
     createHotel(state, action: PayloadAction<IHotel>) {
       state.hotel = action.payload;
     },
+    updateHotel(state, action: PayloadAction<IHotel>) {
+      state.hotel = action.payload;
+    },
+    deleteHotel(state, action: PayloadAction<IHotel>) {
+      state.hotel = action.payload;
+    },
+    deleteAllHotels(state, action: PayloadAction<IHotel>) {
+      state.hotel = action.payload;
+    },
     getHotelById(state, action) {
       state.hotel = action.payload;
     },

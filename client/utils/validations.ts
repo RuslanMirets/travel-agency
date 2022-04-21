@@ -22,5 +22,6 @@ export const ComplexFormSchema = yup.object().shape({
 export const HotelFormSchema = yup.object().shape({
   name: yup.string().required('Введите название отеля'),
   location: yup.string().required('Введите расположение отеля'),
-  complexId: yup.number().required('Выберите строение'),
+  complexId: yup.string().required('Выберите строение'),
+  image: yup.mixed().required('Загрузите изображение'),
 });

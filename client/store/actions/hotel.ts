@@ -1,6 +1,6 @@
 import { IHotel } from './../../types/hotel';
 import { AppDispatch } from '..';
-import { getAPI, postAPI } from '../../utils/fetchData';
+import { deleteAPI, getAPI, patchAPI, postAPI } from '../../utils/fetchData';
 import { hotelSlice } from './../slices/hotel';
 import { alertSlice } from '../slices/alert';
 
@@ -24,6 +24,45 @@ export const createHotel = (data: IHotel) => async (dispatch: AppDispatch) => {
     const response = await postAPI('hotel', formData);
     dispatch(hotelSlice.actions.createHotel(response.data));
     dispatch(alertSlice.actions.success('Отель добавлен'));
+
+    const getResponse = await getAPI('hotel');
+    dispatch(hotelSlice.actions.getHotels(getResponse.data));
+  } catch (error: any) {
+    dispatch(alertSlice.actions.errors(error.response.data.message));
+  }
+};
+
+export const updateHotel = (data: IHotel, id: number) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await patchAPI(`hotel/${id}`, data);
+    dispatch(hotelSlice.actions.updateHotel(response.data));
+    dispatch(alertSlice.actions.success('Отель изменен'));
+
+    const getResponse = await getAPI('hotel');
+    dispatch(hotelSlice.actions.getHotels(getResponse.data));
+  } catch (error: any) {
+    dispatch(alertSlice.actions.errors(error.response.data.message));
+  }
+};
+
+export const deleteHotel = (id: number) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await deleteAPI(`hotel/${id}`);
+    dispatch(hotelSlice.actions.deleteHotel(response.data));
+    dispatch(alertSlice.actions.success('Отель удален'));
+
+    const getResponse = await getAPI('hotel');
+    dispatch(hotelSlice.actions.getHotels(getResponse.data));
+  } catch (error: any) {
+    dispatch(alertSlice.actions.errors(error.response.data.message));
+  }
+};
+
+export const deleteAllHotels = () => async (dispatch: AppDispatch) => {
+  try {
+    const response = await deleteAPI('hotel');
+    dispatch(hotelSlice.actions.deleteAllHotels(response.data));
+    dispatch(alertSlice.actions.success('Все отели удалены'));
 
     const getResponse = await getAPI('hotel');
     dispatch(hotelSlice.actions.getHotels(getResponse.data));

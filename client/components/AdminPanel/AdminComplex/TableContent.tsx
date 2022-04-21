@@ -28,7 +28,11 @@ export const TableContent: React.FC<IProps> = ({ complex }) => {
   return (
     <>
       <TableRow>
-        <TableCell className={styles.actionCell}>
+        <TableCell>{complex.id}</TableCell>
+        <TableCell>{complex.name}</TableCell>
+        <TableCell>{new Date(complex.createdAt).toLocaleString()}</TableCell>
+        <TableCell>{new Date(complex.updatedAt).toLocaleString()}</TableCell>
+        <TableCell className={styles.actionCell} align="right">
           <IconButton color="info" onClick={openUpdateDialog}>
             <EditIcon />
           </IconButton>
@@ -36,10 +40,6 @@ export const TableContent: React.FC<IProps> = ({ complex }) => {
             <DeleteIcon />
           </IconButton>
         </TableCell>
-        <TableCell align="right">{complex.id}</TableCell>
-        <TableCell align="right">{complex.name}</TableCell>
-        <TableCell align="right">{new Date(complex.createdAt).toLocaleString()}</TableCell>
-        <TableCell align="right">{new Date(complex.updatedAt).toLocaleString()}</TableCell>
       </TableRow>
       <AdminComplexDialog
         open={openDialog}

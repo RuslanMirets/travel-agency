@@ -30,7 +30,11 @@ export const TableContent: React.FC<IProps> = ({ hotel }) => {
   return (
     <>
       <TableRow>
-        <TableCell className={styles.actionCell}>
+        <TableCell>{hotel.id}</TableCell>
+        <TableCell>{hotel.name}</TableCell>
+        <TableCell>{new Date(hotel.createdAt).toLocaleString()}</TableCell>
+        <TableCell>{new Date(hotel.updatedAt).toLocaleString()}</TableCell>
+        <TableCell className={styles.actionCell} align="right">
           <IconButton color="info" onClick={openUpdateDialog}>
             <EditIcon />
           </IconButton>
@@ -38,17 +42,6 @@ export const TableContent: React.FC<IProps> = ({ hotel }) => {
             <DeleteIcon />
           </IconButton>
         </TableCell>
-        <TableCell align="right">{hotel.id}</TableCell>
-        <TableCell align="right">
-          <img className={styles.image} src={hotelImage + hotel.image} alt={hotel.name} />
-        </TableCell>
-        <TableCell align="right">
-          <LinkItem href={`/admin/hotel/${hotel.id}`}>{hotel.name}</LinkItem>
-        </TableCell>
-        <TableCell align="right">{hotel.complex.name}</TableCell>
-        <TableCell align="right">{hotel.location}</TableCell>
-        <TableCell align="right">{new Date(hotel.createdAt).toLocaleString()}</TableCell>
-        <TableCell align="right">{new Date(hotel.updatedAt).toLocaleString()}</TableCell>
       </TableRow>
       <AdminHotelDialog
         open={openDialog}

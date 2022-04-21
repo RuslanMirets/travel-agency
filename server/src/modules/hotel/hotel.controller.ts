@@ -1,8 +1,11 @@
+import { UpdateHotelDto } from './dto/update-hotel.dto';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  Patch,
   Post,
   Res,
   UploadedFile,
@@ -55,5 +58,20 @@ export class HotelController {
   @Get(':id')
   findOneById(@Param('id') hotelId: number) {
     return this.hotelService.findOneById(hotelId);
+  }
+
+  @Patch(':id')
+  update(@Body() dto: UpdateHotelDto, @Param('id') complexId: number) {
+    return this.hotelService.update(dto, complexId);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') complexId: number) {
+    return this.hotelService.delete(complexId);
+  }
+
+  @Delete()
+  deleteAll() {
+    return this.hotelService.deleteAll();
   }
 }

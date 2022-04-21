@@ -27,9 +27,8 @@ export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSor
   return (
     <TableHead>
       <TableRow>
-        <TableCell>Actions</TableCell>
         {headCells.map((headCell) => (
-          <TableCell key={headCell.id} align="right">
+          <TableCell key={headCell.id}>
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'desc'}
@@ -38,6 +37,7 @@ export const TableHeader: React.FC<IProps> = ({ order, orderBy, handleRequestSor
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell align="right"></TableCell>
       </TableRow>
     </TableHead>
   );
