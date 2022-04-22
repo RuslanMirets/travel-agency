@@ -1,3 +1,4 @@
+import { Kind } from './../../modules/kind/models/kind.model';
 import { Hotel } from 'src/modules/hotel/models/hotel.model';
 import { Complex } from './../../modules/complex/models/complex.model';
 import { UserRole } from './../../modules/role/models/user-role.model';
@@ -26,7 +27,7 @@ export const databaseProvider = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Role, UserRole, Complex, Hotel]);
+      sequelize.addModels([User, Role, UserRole, Complex, Hotel, Kind]);
       await sequelize.sync();
       return sequelize;
     },
