@@ -1,3 +1,4 @@
+import { kindReducer } from './slices/kind';
 import { hotelReducer } from './slices/hotel';
 import { complexReducer } from './slices/complex';
 import { alertReducer } from './slices/alert';
@@ -12,6 +13,7 @@ export function makeStore() {
       alert: alertReducer,
       complex: complexReducer,
       hotel: hotelReducer,
+      kind: kindReducer,
     },
   });
 }
