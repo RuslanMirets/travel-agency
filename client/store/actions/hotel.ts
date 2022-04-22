@@ -32,25 +32,6 @@ export const createHotel = (data: IHotel) => async (dispatch: AppDispatch) => {
   }
 };
 
-// export const updateHotel = (data: IHotel, id: number) => async (dispatch: AppDispatch) => {
-//   try {
-//     const formData = new FormData();
-//     formData.append('name', data.name);
-//     formData.append('location', data.location);
-//     formData.append('complexId', data.complexId as any);
-//     formData.append('image', data.image[0]);
-
-//     const response = await patchAPI(`hotel/${id}`, formData);
-//     dispatch(hotelSlice.actions.updateHotel(response.data));
-//     dispatch(alertSlice.actions.success('Отель изменен'));
-
-//     const getResponse = await getAPI('hotel');
-//     dispatch(hotelSlice.actions.getHotels(getResponse.data));
-//   } catch (error: any) {
-//     dispatch(alertSlice.actions.errors(error.response.data.message));
-//   }
-// };
-
 export const updateHotelName = (data: object, id: number) => async (dispatch: AppDispatch) => {
   try {
     const response = await patchAPI(`hotel/name/${id}`, data);
@@ -90,12 +71,12 @@ export const updateHotelComplex = (data: object, id: number) => async (dispatch:
   }
 };
 
-export const updateHotelImage = (image: any, id: number) => async (dispatch: AppDispatch) => {
+export const updateHotelImage = (data: any, id: number) => async (dispatch: AppDispatch) => {
   try {
     const formData = new FormData();
-    formData.append('image', image[0]);
+    formData.append('image', data.image[0]);
 
-    const response = await patchAPI(`hotel/image/${id}`, image);
+    const response = await patchAPI(`hotel/image/${id}`, formData);
     dispatch(hotelSlice.actions.updateHotel(response.data));
     dispatch(alertSlice.actions.success('Отель изменен'));
 

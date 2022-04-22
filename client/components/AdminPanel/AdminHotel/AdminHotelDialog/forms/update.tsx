@@ -19,7 +19,6 @@ import React from 'react';
 import styles from '../AdminHotelDialog.module.scss';
 import { FormFile } from '../../../../FormFile';
 import { hotelImage } from '../../../../../utils/constants';
-// import { updateHotel } from '../../../../../store/actions/hotel';
 import { alertSlice } from '../../../../../store/slices/alert';
 import {
   updateHotelComplex,
@@ -60,24 +59,16 @@ export const UpdateForm: React.FC<IProps> = ({ onClose, hotel }) => {
     },
   });
 
-  // const { name, location, complexId } = methods.getValues();
-
-  // const onSubmit = (data: any) => {
-  //   if (
-  //     name === hotel.name &&
-  //     location === hotel.location &&
-  //     complexId === hotel.complexId &&
-  //     hotel.image !== ''
-  //   ) {
-  //     dispatch(alertSlice.actions.errors('Нечего менять'));
-  //   } else if (image === '') {
-  //     dispatch(alertSlice.actions.errors('Загрузите изображение'));
-  //   } else {
-  //     dispatch(updateHotel(data, hotel.id));
-  //     onClose();
-  //   }
-  // };
-  const onSubmit = ({ name, location, complexId }: any) => {
+  const onSubmit = ({ name, location, complexId, image }: any) => {
+    if (
+      name === hotel.name &&
+      location === hotel.location &&
+      parseInt(complexId) === hotel.complexId &&
+      image[0] === undefined
+    ) {
+      dispatch(alertSlice.actions.success(''));
+      dispatch(alertSlice.actions.errors('Нечего менять'));
+    }
     if (name !== hotel.name) {
       dispatch(updateHotelName({ name }, hotel.id));
       onClose();
@@ -90,8 +81,8 @@ export const UpdateForm: React.FC<IProps> = ({ onClose, hotel }) => {
       dispatch(updateHotelComplex({ complexId }, hotel.id));
       onClose();
     }
-    if (image !== hotel.image) {
-      dispatch(updateHotelImage(image, hotel.id));
+    if (image[0] !== undefined) {
+      dispatch(updateHotelImage({ image: image }, hotel.id));
       onClose();
     }
   };
