@@ -71,20 +71,17 @@ export const UpdateForm: React.FC<IProps> = ({ onClose, hotel }) => {
     }
     if (name !== hotel.name) {
       dispatch(updateHotelName({ name }, hotel.id));
-      onClose();
     }
     if (location !== hotel.location) {
       dispatch(updateHotelLocation({ location }, hotel.id));
-      onClose();
     }
     if (complexId !== hotel.complexId) {
       dispatch(updateHotelComplex({ complexId }, hotel.id));
-      onClose();
     }
     if (image[0] !== undefined) {
       dispatch(updateHotelImage({ image: image }, hotel.id));
-      onClose();
     }
+    onClose();
   };
 
   return (
